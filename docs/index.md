@@ -1,22 +1,10 @@
 ---
 hero:
-  title: library
-  description: A react library developed with dumi
+  title: Yolo⚡️
+  description: react 组件存放处，此处组件皆为本人所写
   actions:
-    - text: Hello
-      link: /
-    - text: World
-      link: /
-features:
-  - title: Hello
-    emoji: 💎
-    description: Put hello description here
-  - title: World
-    emoji: 🌈
-    description: Put world description here
-  - title: '!'
-    emoji: 🚀
-    description: Put ! description here
+    - text: 个人博客 👀
+      link: https://super-zihao.gitee.io/blog/
+    - text: CodePen ⭐️
+      link: https://codepen.io/hzihhuang
 ---
-
-HDesign

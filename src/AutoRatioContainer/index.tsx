@@ -5,14 +5,18 @@ export type Props = {
   /** 容器比例 width / height */
   ratio?: number;
   children?: any;
+  parentClassName?: string;
   parentStyle?: React.CSSProperties;
+  className?: string;
   style?: React.CSSProperties;
 };
 
 const AutoRatioContainer: React.FC<Props> = ({
   ratio = 1,
   children,
+  parentClassName = '',
   parentStyle,
+  className = '',
   style,
 }) => {
   const boxRef = useRef<HTMLDivElement>(null);
@@ -26,13 +30,15 @@ const AutoRatioContainer: React.FC<Props> = ({
     const callback: ResizeObserverCallback = (entries) => {
       entries.forEach((item) => {
         const { width, height } = item.contentRect;
-        const { width: childWidth, height: childHeight } = (item.target.firstChild as HTMLDivElement).getBoundingClientRect?.();
+        const { width: childWidth, height: childHeight } = (
+          item.target.firstChild as HTMLDivElement
+        ).getBoundingClientRect?.();
         setReference(() => {
-           // 比例等于 1 的时候根据父元素宽高来做
-           if (ratio === 1) return width > height ? 'height' : 'width';
-           if ((width / height) > (childWidth / childHeight)) return 'height';
-           return 'width';
-        })
+          // 比例等于 1 的时候根据父元素宽高来做
+          if (ratio === 1) return width > height ? 'height' : 'width';
+          if (width / height > childWidth / childHeight) return 'height';
+          return 'width';
+        });
       });
     };
     const resizeObserver = new ResizeObserver(callback);
@@ -41,9 +47,13 @@ const AutoRatioContainer: React.FC<Props> = ({
   }, [ratio]);
 
   return (
-    <div className='auto-ratio-container' style={parentStyle} ref={boxRef}>
+    <div
+      className={`auto-ratio-container ${parentClassName}`}
+      style={parentStyle}
+      ref={boxRef}
+    >
       <div
-        className='auto-ratio-box'
+        className={`auto-ratio-box ${className}`}
         style={{
           ...(style ?? {}),
           aspectRatio: `${ratio}`,
