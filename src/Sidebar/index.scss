@@ -2,19 +2,16 @@
   position: var(--sidebar-position, absolute);
   z-index: var(--sidebar-zIndex, 10);
   display: flex;
-  .sidebar-vertical {
-    display: grid;
-    gap: var(--sidebar-item-gap, 0);
-    grid-template-columns: var(--sidebar-item-width, 0);
-    grid-auto-rows: var(--sidebar-item-height, 0);
-  }
+
+  .sidebar-vertical,
   .sidebar-horizontal {
     display: flex;
     gap: var(--sidebar-item-gap, 0);
     & > * {
       flex-shrink: 0;
-      width: var(--sidebar-item-width, 0);
-      height: var(--sidebar-item-height, 0);
     }
+  }
+  .sidebar-vertical {
+    flex-direction: column;
   }
 }

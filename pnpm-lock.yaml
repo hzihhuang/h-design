@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
+  '@types/lodash': ^4.14.202
   '@types/react': ^18.0.0
   '@types/react-dom': ^18.0.0
   '@umijs/lint': ^4.0.0
@@ -27,6 +28,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.8.1
   '@commitlint/config-conventional': 17.8.1
+  '@types/lodash': 4.14.202
   '@types/react': 18.2.48
   '@types/react-dom': 18.2.18
   '@umijs/lint': 4.1.1_bvmx4qr75fhdgzezidqi4yyel4
@@ -2585,6 +2587,10 @@ packages:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
       '@types/node': 20.11.7
+    dev: true
+
+  /@types/lodash/4.14.202:
+    resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
     dev: true
 
   /@types/mdast/3.0.15:

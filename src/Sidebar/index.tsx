@@ -1,6 +1,13 @@
-import React, { CSSProperties, MutableRefObject, ReactNode, useEffect, useMemo, useState } from 'react';
-import { createPortal } from 'react-dom';
 import _ from 'lodash';
+import React, {
+  CSSProperties,
+  ReactNode,
+  RefObject,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { createPortal } from 'react-dom';
 import './index.scss';
 
 export type Props = {
@@ -8,11 +15,11 @@ export type Props = {
   className?: string;
   /** 样式 */
   style?: CSSProperties;
-  /** 
+  /**
    * @description 挂载位置
    * @default document.body
    */
-  target?: HTMLElement | MutableRefObject<HTMLElement>;
+  target?: HTMLElement | RefObject<HTMLDivElement>;
   /** 排列方向 */
   direction?: 'vertical' | 'horizontal';
   /** 对齐方向 */
@@ -22,8 +29,6 @@ export type Props = {
   /** 子元素配置 */
   itemOptions?: {
     gap?: number;
-    width?: number;
-    height?: number;
   };
   /** 偏移量 */
   offset?: {
@@ -31,7 +36,7 @@ export type Props = {
     top?: number;
     right?: number;
     bottom?: number;
-  }
+  };
   /** 层级 */
   zIndex?: Pick<CSSProperties, 'zIndex'>;
   children?: ReactNode;
@@ -50,72 +55,105 @@ const Sidebar: React.FC<Props> = ({
   children,
 }) => {
   /** 挂载到哪里，默认 body */
-  const [currentTarget, setCurrentTarget] = useState<HTMLElement>(document.body);
+  const [currentTarget, setCurrentTarget] = useState<HTMLElement>(
+    document.body,
+  );
   useEffect(() => {
     if (_.isNil(target)) return;
-    if (!!(target as any)?.current) return setCurrentTarget((target as MutableRefObject<HTMLElement>).current);
+    if (!!(target as any)?.current)
+      return setCurrentTarget(
+        (target as RefObject<HTMLElement>)?.current as HTMLElement,
+      );
     setCurrentTarget(target as HTMLElement);
   }, [target]);
 
   /** sidebar层级，默认 10 */
-  const zIndexMemo = useMemo(() => ({ [_.isNil(zIndex) ? '' : '--sidebar-zIndex']: zIndex }), [zIndex])
+  const zIndexMemo = useMemo(
+    () => ({ [_.isNil(zIndex) ? '' : '--sidebar-zIndex']: zIndex }),
+    [zIndex],
+  );
 
   /** 位置 */
   const positionMemo = useMemo(() => {
-    const positionStyles: { [T: string]: any } = {};
+    const positionStyles: { [key: string]: any } = {};
     switch (placement) {
-      case 'right': positionStyles['alignItems'] = 'end';
+      case 'right':
+        positionStyles['alignItems'] = 'end';
       case 'left': {
-        positionStyles['height'] = '100%'
-        positionStyles['width'] = '0px'
-        positionStyles['flexDirection'] = 'column'
+        positionStyles['height'] = '100%';
+        positionStyles['width'] = '0px';
+        positionStyles['flexDirection'] = 'column';
         switch (alignment) {
-          case 'start': positionStyles['justifyContent'] = 'start'; break;
-          case 'center': positionStyles['justifyContent'] = 'center'; break;
-          case 'end': positionStyles['justifyContent'] = 'end'; break;
+          case 'start':
+            positionStyles['justifyContent'] = 'start';
+            break;
+          case 'center':
+            positionStyles['justifyContent'] = 'center';
+            break;
+          case 'end':
+            positionStyles['justifyContent'] = 'end';
+            break;
         }
         break;
       }
-      case 'bottom': positionStyles['alignItems'] = 'end';
+      case 'bottom':
+        positionStyles['alignItems'] = 'end';
       case 'top': {
-        positionStyles['width'] = '100%'
-        positionStyles['height'] = '0px'
+        positionStyles['width'] = '100%';
+        positionStyles['height'] = '0px';
         switch (alignment) {
-          case 'start': positionStyles['justifyContent'] = 'start'; break;
-          case 'center': positionStyles['justifyContent'] = 'center'; break;
-          case 'end': positionStyles['justifyContent'] = 'end'; break;
+          case 'start':
+            positionStyles['justifyContent'] = 'start';
+            break;
+          case 'center':
+            positionStyles['justifyContent'] = 'center';
+            break;
+          case 'end':
+            positionStyles['justifyContent'] = 'end';
+            break;
         }
       }
     }
-    positionStyles[placement] = 0
+    positionStyles[placement] = 0;
     return positionStyles;
   }, [placement, alignment]);
 
   /** 最终的样式 */
-  const sidebarStyle = useMemo(() => ({
-    ...zIndexMemo,
-    ...positionMemo,
-    ...style
-  }), [zIndexMemo, positionMemo, style])
+  const sidebarStyle = useMemo(
+    () => ({
+      ...zIndexMemo,
+      ...positionMemo,
+      ...style,
+    }),
+    [zIndexMemo, positionMemo, style],
+  );
 
   /** 排列方向, 默认 vertical(垂直) */
-  const { width, height, gap } = itemOptions ?? {};
-  const directionMemo = useMemo(() => ({
-    [_.isNil(gap) ? '' : '--sidebar-item-gap']: `${gap}px`,
-    [_.isNil(width) ? '' : '--sidebar-item-width']: `${width}px`,
-    [_.isNil(height) ? '' : '--sidebar-item-height']: `${height}px`,
-  }), [gap, width, height])
+  const { gap } = itemOptions ?? {};
+  const directionMemo = useMemo(
+    () => ({
+      [_.isNil(gap) ? '' : '--sidebar-item-gap']: `${gap}px`,
+    }),
+    [gap],
+  );
 
   /** 偏移量 */
   const translate = useMemo(() => {
     if (!offset) return {};
     const { top, left, bottom, right } = offset;
-    return { transform: `translate(${left ?? (right ? -right : 0)}px, ${top ?? (bottom ? -bottom : 0)}px)` }
-  }, [offset])
+    return {
+      transform: `translate(${left ?? (right ? -right : 0)}px, ${
+        top ?? (bottom ? -bottom : 0)
+      }px)`,
+    };
+  }, [offset]);
 
   return createPortal(
     <div className={`sidebar ${className}`} style={sidebarStyle}>
-      <div className={`sidebar-${direction}`} style={{...directionMemo, ...translate}}>
+      <div
+        className={`sidebar-${direction}`}
+        style={{ ...directionMemo, ...translate }}
+      >
         {children}
       </div>
     </div>,
