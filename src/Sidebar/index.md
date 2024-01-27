@@ -20,3 +20,7 @@ group: 功能性
 3.  内部元素排列方向 （ direction ）
 
 <code src="./demo/demo2.tsx"></code>
+
+## API
+
+<API id="Sidebar"><API>

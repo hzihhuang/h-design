@@ -11,34 +11,58 @@ import { createPortal } from 'react-dom';
 import './index.scss';
 
 export type Props = {
-  /** 类名 */
+  /**
+   * @description 类名
+   * @default ""
+   */
   className?: string;
-  /** 样式 */
+  /**
+   * @description 样式
+   */
   style?: CSSProperties;
   /**
    * @description 挂载位置
    * @default document.body
    */
   target?: HTMLElement | RefObject<HTMLDivElement>;
-  /** 排列方向 */
+  /**
+   * @description 排列方向
+   * @default 'vertical'
+   */
   direction?: 'vertical' | 'horizontal';
-  /** 对齐方向 */
+  /**
+   * @description 对齐方向
+   * @default 'end'
+   */
   alignment?: 'start' | 'center' | 'end';
-  /** 位置 */
+  /**
+   * @description 位置
+   * @default 'right'
+   */
   placement?: 'left' | 'top' | 'right' | 'bottom';
-  /** 子元素配置 */
+  /**
+   * @description 子元素配置项
+   */
   itemOptions?: {
     gap?: number;
   };
-  /** 偏移量 */
+  /**
+   * @description 组件偏移量
+   */
   offset?: {
     left?: number;
     top?: number;
     right?: number;
     bottom?: number;
   };
-  /** 层级 */
+  /**
+   * @description 组件所在层级
+   * @default 10
+   */
   zIndex?: Pick<CSSProperties, 'zIndex'>;
+  /**
+   * @description 子元素
+   */
   children?: ReactNode;
 };
 

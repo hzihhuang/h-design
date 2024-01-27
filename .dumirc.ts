@@ -5,6 +5,10 @@ export default defineConfig({
   themeConfig: {
     name: 'HDesign',
   },
-  plugins: ['@umijs/plugins/dist/tailwindcss'],
+  resolve: {
+    entryFile: './src/index.ts',
+  },
+  apiParser: {}, // 开启自动识别 API 功能
+  plugins: ['@umijs/plugins/dist/tailwindcss'], // 实现 tailwindcss 能力
   tailwindcss: {},
 });

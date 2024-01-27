@@ -1,14 +1,34 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import './index.scss';
 
 export type Props = {
-  /** 容器比例 width / height */
+  /**
+   * @description 容器的比例
+   * @default 1
+   */
   ratio?: number;
-  children?: any;
+  /**
+   * @description 容器元素 className
+   * @default ""
+   */
   parentClassName?: string;
+  /**
+   * @description 容器元素 style
+   */
   parentStyle?: React.CSSProperties;
+  /**
+   * @description 内部容器元素 className
+   * @default ""
+   */
   className?: string;
+  /**
+   * @description 内部容器元素 style
+   */
   style?: React.CSSProperties;
+  /**
+   * 子元素
+   */
+  children?: ReactNode;
 };
 
 const AutoRatioContainer: React.FC<Props> = ({
