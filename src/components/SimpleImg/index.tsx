@@ -5,6 +5,7 @@ export const ASD: () => void = () => {};
 export type SimpleImgProps = {
   /**
    * @description 定制加载样式，加载动画
+   * @default ""
    */
   loadingClassName?: string;
 };

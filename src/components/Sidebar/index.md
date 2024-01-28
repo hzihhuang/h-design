@@ -1,14 +1,15 @@
 ---
 title: Sidebar
-description: 一般用于右下角气泡浮窗气泡，此组件可以快速应用于页面各个位置
 group: 功能性
 ---
 
 # Sidebar
 
+此组件可以快速应用于页面各个位置，一般用于右下角气泡浮窗气泡
+
 ## 基础用法
 
-快速定位与某个元素内部的各个位置，默认 document.body
+默认挂载到 document.body
 <code src="./demo/index.tsx"></code>
 
 ## 丰富样式

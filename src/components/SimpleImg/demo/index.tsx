@@ -9,7 +9,7 @@ const Index: React.FC = (props) => {
       <SimpleImg
         className="w-40 h-40 rounded-xl"
         loadingClassName="bg-slate-600"
-        src="https://theme.b5b6.com/zb_users/upload/2023/05/20230523124149168481690977350.jpg"
+        src="https://images.pexels.com/photos/19601923/pexels-photo-19601923.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       />
     </div>
   );
