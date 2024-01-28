@@ -1,9 +1,16 @@
 import { defineConfig } from 'dumi';
 
+//github仓库名称
+const defaultPath = '/HDesign';
+//打包后gh-pages默认会拼接仓库名称在路径上
+const baseUrl = process.env.NODE_ENV === 'production' ? defaultPath : '';
+
 export default defineConfig({
+  base: defaultPath,
+  publicPath: `${baseUrl}/`,
   outputPath: 'docs-dist',
-  logo: '/logo.png',
-  favicons: ['/favicon.png'],
+  logo: `${baseUrl}/logo.png`,
+  favicons: [`${baseUrl}/favicon.png`],
   themeConfig: {
     name: 'Design',
     socialLinks: {
