@@ -6,7 +6,7 @@ const Demo2: React.FC = () => {
   return (
     <>
       <div
-        className="relative border w-full border-cyan-600"
+        className="relative border w-full border-cyan-600 z-0"
         style={{ height: 500 }}
         ref={boxRef}
       ></div>

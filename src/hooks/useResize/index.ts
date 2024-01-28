@@ -14,15 +14,15 @@ type callbackType = (e: ResizeObserverEntry, observer: ResizeObserver) => void;
  * @param target Element
  * @returns () => void（取消订阅）
  */
-function useResize(
+function useResize<T extends Element>(
   callback: callbackType,
-  target: Element | RefObject<Element | undefined>,
+  target: T | RefObject<T | undefined>,
 ): () => void {
-  let currentTarget: Element | null | undefined;
+  let currentTarget: T | null | undefined;
   useEffect(() => {
-    currentTarget = (target as RefObject<Element>).current
-      ? (target as RefObject<Element>).current
-      : (target as Element);
+    currentTarget = (target as RefObject<T>).current
+      ? (target as RefObject<T>).current
+      : (target as T);
     if (!currentTarget) return;
     if (!rObserver) {
       rObserver = new ResizeObserver((entries) => {
@@ -36,6 +36,12 @@ function useResize(
     }
     resizeElementArr.set(currentTarget, callback);
     rObserver.observe(currentTarget);
+
+    return () => {
+      if (!currentTarget) return;
+      resizeElementArr.delete(currentTarget);
+      rObserver.unobserve(currentTarget);
+    };
   }, []);
 
   return () => {
