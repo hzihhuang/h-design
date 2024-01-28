@@ -19,8 +19,8 @@ function useThrottlingState<T>(
       timer.current = setTimeout(() => {
         clearTimeout(timer.current);
         timer.current = undefined;
-        // @ts-ignore
         setThrottledValue((v) =>
+          // @ts-ignore
           typeof value === 'function' ? value(v) : value,
         );
       }, delay);

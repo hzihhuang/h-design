@@ -17,10 +17,10 @@ function useDebounceState<T>(
       if (timer.current) {
         clearTimeout(timer.current);
       }
-      // @ts-ignore
       timer.current = setTimeout(
         () =>
           setDebouncedValue((v) =>
+            // @ts-ignore
             typeof value === 'function' ? value(v) : value,
           ),
         delay,

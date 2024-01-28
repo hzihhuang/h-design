@@ -13,6 +13,7 @@ export default defineConfig({
   favicons: [`${baseUrl}/favicon.png`],
   themeConfig: {
     name: 'Design',
+    footer: 'Welcome Here',
     socialLinks: {
       github: 'https://github.com/Super-ZiHao/HDesign',
     },

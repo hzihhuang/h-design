@@ -44,7 +44,7 @@ const Demo = () => {
         </div>
       </div>
       <AutoRatioContainer
-        parentClassName=" bg-slate-400 resize"
+        parentClassName="bg-slate-400 resize"
         className="overflow-hidden"
         parentStyle={{ padding }}
         ratio={ratio}
