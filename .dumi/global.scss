@@ -2,3 +2,13 @@
 svg {
   display: unset !important;
 }
+
+// logo 颜色变化
+html[data-prefers-color="light"] .dumi-default-logo > img{
+  filter: invert(1);
+}
+.dumi-default-logo > img {
+  scale: 1.6;
+  translate: 13px;
+  transition: filter 0.2s ease;
+}

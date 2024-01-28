@@ -1,6 +1,9 @@
 ---
 title: AutoRatioContainer
-group: 功能性
+group:
+  title: 功能性
+  order: 1
+order: 1
 ---
 
 # AutoRatioContainer

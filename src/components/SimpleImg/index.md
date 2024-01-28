@@ -1,6 +1,9 @@
 ---
 title: SimpleImg
-group: 微组件
+group:
+  title: 微组件
+  order: 2
+order: 1
 ---
 
 # SimpleImg
