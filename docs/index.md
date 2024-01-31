@@ -1,6 +1,6 @@
 ---
 hero:
-  title: Yolo⚡️
+  title: Super⚡️HZH
   description: react 组件存放处，此处组件皆为本人所写
   actions:
     - text: 个人博客 👀

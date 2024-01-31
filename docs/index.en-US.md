@@ -1,6 +1,6 @@
 ---
 hero:
-  title: Yolo⚡️
+  title: Super⚡️HZH
   description: The storage location for React components, where all components are written by myself
 
   actions:
