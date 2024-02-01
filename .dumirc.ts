@@ -1,4 +1,5 @@
 import { defineConfig } from 'dumi';
+import { defineThemeConfig } from 'dumi-theme-chakra';
 
 //github仓库名称
 const defaultPath = '/HDesign';
@@ -14,21 +15,27 @@ export default defineConfig({
   themeConfig: {
     name: 'Design',
     footer: 'Welcome Here',
-    socialLinks: {
-      github: 'https://github.com/Super-ZiHao/HDesign',
-    },
+
     nav: {
       'zh-CN': [
-        { title: '组件', link: '/components' },
-        { title: 'Hooks', link: '/hooks' },
-        { title: 'Utils', link: '/utils' },
+        { title: '组件', link: '/components/auto-ratio-container' },
+        { title: 'Hooks', link: '/hooks/use-debounce-state' },
+        { title: 'Utils', link: '/utils/is-array-string' },
       ],
       'en-US': [
-        { title: 'Components', link: '/en-US/components' },
-        { title: 'Hooks', link: '/en-US/hooks' },
-        { title: 'Utils', link: '/en-US/utils' },
+        { title: 'Components', link: '/en-US/components/auto-ratio-container' },
+        { title: 'Hooks', link: '/en-US/hooks/use-debounce-state' },
+        { title: 'Utils', link: '/en-US/utils/is-array-string' },
       ],
     },
+    ...defineThemeConfig({
+      social: {
+        github: {
+          name: 'Github',
+          link: 'https://github.com/Super-ZiHao/HDesign',
+        },
+      },
+    }),
   },
   locales: [
     // 多语言

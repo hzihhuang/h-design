@@ -12,3 +12,31 @@ html[data-prefers-color="light"] .dumi-default-logo > img{
   translate: 13px;
   transition: filter 0.2s ease;
 }
+
+
+
+// 浅色模式
+html[data-prefers-color="light"] {
+  button {
+    &:hover {
+      background-color: rgb(226, 232, 240);
+    }
+  }
+}
+// 暗黑模式
+html[data-prefers-color="dark"] {
+  button {
+    &:hover {
+      background-color: rgb(226, 232, 240);
+    }
+  }
+}
+
+html button {
+  border-width: 1px;
+  padding: .25em .5em;
+  border-radius: .5em;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
