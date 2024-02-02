@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 //github仓库名称
-const defaultPath = '/H-Design';
+const defaultPath = '/h-design';
 //打包后gh-pages默认会拼接仓库名称在路径上
 const baseUrl = process.env.NODE_ENV === 'production' ? defaultPath : '';
 
