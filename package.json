@@ -46,7 +46,8 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -67,8 +68,7 @@
     "prettier-plugin-packagejson": "^2.2.18",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "stylelint": "^14.9.1",
-    "tailwindcss": "^3.4.1"
+    "stylelint": "^14.9.1"
   },
   "peerDependencies": {
     "react": ">=16.9.0",

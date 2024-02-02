@@ -1,8 +1,7 @@
 import { defineConfig } from 'dumi';
-import { defineThemeConfig } from 'dumi-theme-chakra';
 
 //github仓库名称
-const defaultPath = '/HDesign';
+const defaultPath = '/H-Design';
 //打包后gh-pages默认会拼接仓库名称在路径上
 const baseUrl = process.env.NODE_ENV === 'production' ? defaultPath : '';
 
@@ -28,14 +27,6 @@ export default defineConfig({
         { title: 'Utils', link: '/en-US/utils/is-array-string' },
       ],
     },
-    ...defineThemeConfig({
-      social: {
-        github: {
-          name: 'Github',
-          link: 'https://github.com/Super-ZiHao/HDesign',
-        },
-      },
-    }),
   },
   locales: [
     // 多语言
