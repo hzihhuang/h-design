@@ -1,0 +1,21 @@
+---
+title: isValidVariableName
+group:
+  title: 布尔
+  order: 1
+order: 3
+---
+
+# isValidVariableName
+
+determine if the string can be a variable name
+
+```tsx | pure
+import { isValidVariableName } from 'HDesign';
+
+isValidVariableName('_name'); // true
+isValidVariableName('name'); // true
+isValidVariableName('$name'); // true
+isValidVariableName('1name'); // false 不能数字开头
+isValidVariableName('class'); // false 关键字、保留字
+```

@@ -2,8 +2,8 @@
 title: isObjectString
 group:
   title: 布尔
-  order: 2
-order: 1
+  order: 1
+order: 2
 ---
 
 # isObjectString

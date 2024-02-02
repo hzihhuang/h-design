@@ -3,7 +3,7 @@ title: isObjectString
 group:
   title: boolean
   order: 1
-order: 1
+order: 2
 ---
 
 # isObjectString
