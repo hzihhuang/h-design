@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { isNil } from 'lodash-es';
 import React, {
   CSSProperties,
   ReactNode,
@@ -83,7 +83,7 @@ const Sidebar: React.FC<Props> = ({
     document.body,
   );
   useEffect(() => {
-    if (_.isNil(target)) return;
+    if (isNil(target)) return;
     if (!!(target as any)?.current)
       return setCurrentTarget(
         (target as RefObject<HTMLElement>)?.current as HTMLElement,
@@ -93,7 +93,7 @@ const Sidebar: React.FC<Props> = ({
 
   /** sidebar层级，默认 10 */
   const zIndexMemo = useMemo(
-    () => ({ [_.isNil(zIndex) ? '' : '--sidebar-zIndex']: zIndex }),
+    () => ({ [isNil(zIndex) ? '' : '--sidebar-zIndex']: zIndex }),
     [zIndex],
   );
 
@@ -156,7 +156,7 @@ const Sidebar: React.FC<Props> = ({
   const { gap } = itemOptions ?? {};
   const directionMemo = useMemo(
     () => ({
-      [_.isNil(gap) ? '' : '--sidebar-item-gap']: `${gap}px`,
+      [isNil(gap) ? '' : '--sidebar-item-gap']: `${gap}px`,
     }),
     [gap],
   );
