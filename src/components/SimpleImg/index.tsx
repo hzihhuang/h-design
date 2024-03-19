@@ -1,15 +1,14 @@
 import classNames from 'classnames';
 import React, { ImgHTMLAttributes, useEffect, useRef, useState } from 'react';
 
-export const ASD: () => void = () => {};
-export type SimpleImgProps = {
+type SimpleImgProps = {
   /**
    * @description 定制加载样式，加载动画
    * @default ""
    */
   loadingClassName?: string;
 };
-export type Props = SimpleImgProps & ImgHTMLAttributes<HTMLImageElement>;
+type Props = SimpleImgProps & ImgHTMLAttributes<HTMLImageElement>;
 /**
  * 简单的图片组件，只提供自己检测图片 loading 的功能、懒加载功能
  * @description 微组件：不添加额外功能，若需要增加功能请在外使用该组件再次封装
