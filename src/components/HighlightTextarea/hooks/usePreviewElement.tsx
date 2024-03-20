@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import React, { Fragment, ReactNode, useMemo } from 'react';
 
 const DEFAULT_ARR: any[] = [];
 
@@ -18,7 +18,7 @@ function usePreviewElement({
   highlight = DEFAULT_ARR,
   formatHighlight,
 }: previewElementOptions) {
-  const showValueList = useMemo(() => {
+  const elementList = useMemo(() => {
     const result: { type: string; msg: string }[] = [];
     [...value].reduce(
       (obj: any, item: string) => {
@@ -55,15 +55,41 @@ function usePreviewElement({
     return result;
   }, [value, highlight]);
 
-  return showValueList.map((item, idx) => {
-    if (item.type === 'default') return item.msg;
-    if (formatHighlight) return formatHighlight(item.msg);
-    return (
-      <span style={{ color: 'blue' }} key={item.msg + idx}>
-        {item.msg}
-      </span>
-    );
+  const element = elementList.map((item, idx) => {
+    let result: ReactNode = null;
+    switch (true) {
+      // 判断最后一个字符串是不是换行，如果是则使用 <br/> 换行
+      case elementList.length - 1 === idx && item.msg.includes('\n'): {
+        result = (
+          <span>
+            {item.msg}
+            <br />
+          </span>
+        );
+        break;
+      }
+      case item.type === 'default': {
+        // 判断是普通的，直接展示
+        result = <span>{item.msg}</span>;
+        break;
+      }
+      case !!formatHighlight: {
+        // 外部传递高亮元素
+        result = formatHighlight(item.msg);
+        break;
+      }
+      default: {
+        // 默认高亮
+        result = <span style={{ color: 'blue' }}>{item.msg}</span>;
+      }
+    }
+    return <Fragment key={item.msg + idx}>{result}</Fragment>;
   });
+
+  return {
+    element,
+    elementList,
+  };
 }
 
 export default usePreviewElement;

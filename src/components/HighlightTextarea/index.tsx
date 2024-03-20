@@ -1,73 +1,103 @@
 import classNames from 'classnames';
-import React, { CSSProperties, TextareaHTMLAttributes, useRef } from 'react';
+import React, {
+  TextareaHTMLAttributes,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+} from 'react';
+import useBaseValue from './hooks/useBaseValue';
+import useCursor from './hooks/useCursor';
 import usePreviewElement, {
   previewElementOptions,
 } from './hooks/usePreviewElement';
-import useSynchronousScroll from './hooks/useSynchronousScroll';
 import './index.scss';
 
-export type Props = {
-  /** 容器 class */
-  containerClassName?: string;
-  /** 容器 style */
-  containerStyle?: CSSProperties;
-} & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> &
+export interface HighlightTextareaRef {
+  /** 编辑器 */
+  textareaRef: React.RefObject<HTMLTextAreaElement>;
+  /** 展示文字的容器 */
+  textRef: React.RefObject<HTMLDivElement>;
+  /** 整体框架 */
+  containerRef: React.RefObject<HTMLDivElement>;
+}
+
+export type Props = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> &
   previewElementOptions;
-
 /**
- * 支持错误文案高亮的输入框
+ * 支持错误文案高亮，以及的输入框
+ *
  */
-const HighlightTextarea: React.FC<Props> = ({
-  highlight,
-  formatHighlight,
-  containerClassName,
-  containerStyle,
-  className,
-  style,
-  value,
-  onScroll,
-  onChange,
-  ...resetProps
-}) => {
-  /** 同步滚动条位置 */
-  const boxRef = useRef<HTMLDivElement>(null);
-  const currentTextAreaRef = useRef<HTMLTextAreaElement>(null);
+const HighlightTextarea = forwardRef<HighlightTextareaRef, Props>(
+  (
+    {
+      className,
+      style,
+      value = '',
+      onChange,
+      highlight,
+      formatHighlight,
+      ...resetProps
+    },
+    ref,
+  ) => {
+    /** 暴露给外部 */
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
+    useImperativeHandle(
+      ref,
+      () => ({
+        textareaRef,
+        textRef,
+        containerRef,
+      }),
+      [],
+    );
 
-  /** 同步 div 和 textarea 的滚动条 */
-  const { handlerChange, handlerScroll } = useSynchronousScroll({
-    onChange,
-    onScroll,
-    boxRef,
-    currentTextAreaRef,
-  });
+    /** 兼容不传递 value 时的情况 */
+    const { currentValue, handlerChange } = useBaseValue({ value, onChange });
 
-  /** 展示数据 */
-  const previewElement = usePreviewElement({
-    value,
-    highlight,
-    formatHighlight,
-  });
+    /** 展示数据 */
+    const { element, elementList } = usePreviewElement({
+      value: currentValue,
+      highlight,
+      formatHighlight,
+    });
 
-  return (
-    <div
-      className={classNames('highlight-textarea-container', containerClassName)}
-      style={containerStyle}
-    >
-      <div className={className} style={style} ref={boxRef}>
-        {previewElement}
-        {/* ps：为了让 div scrollHeight 高度一定超过 textarea scrollHeight */}
-        <div style={{ height: 200 }} />
-      </div>
-      <textarea
-        {...resetProps}
-        className={className}
+    /** 处理光标问题 */
+    const { handlerContainerClick, handlerBoxClick } = useCursor({
+      value: currentValue,
+      textareaRef,
+      elementList,
+    });
+
+    return (
+      <div
+        className={classNames('highlight-textarea-container', className)}
         style={style}
-        value={value}
-        onScroll={handlerScroll}
-        onChange={handlerChange}
-        ref={currentTextAreaRef}
-      />
-    </div>
-  );
-};
+        onClick={handlerContainerClick}
+        ref={containerRef}
+      >
+        <div className="highlight-textarea">
+          <textarea
+            {...resetProps}
+            className={classNames('highlight-textarea-textarea')}
+            onChange={handlerChange}
+            value={currentValue}
+            ref={textareaRef}
+          />
+          <div
+            className={classNames('highlight-textarea-box')}
+            onClick={handlerBoxClick}
+            contentEditable="plaintext-only"
+            suppressContentEditableWarning
+            ref={textRef}
+          >
+            {element}
+          </div>
+        </div>
+      </div>
+    );
+  },
+);
 export default HighlightTextarea;

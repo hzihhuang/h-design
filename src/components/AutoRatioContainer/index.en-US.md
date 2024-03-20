@@ -10,10 +10,9 @@ order: 1
 
 A container component that allows elements to maintain a constant ratio and be fully displayed on the page, similar to the CSS property object-fit: cover.
 
-## Basic usage
+## CASE
 
-You can try to hold and drag the bottom right corner of the container to resize it.
-<code src="./demo/index.tsx"></demo>
+<code src="./demo/index.tsx" description="You can try to hold and drag the bottom right corner of the container to resize it.">Base</demo>
 
 ## API
 

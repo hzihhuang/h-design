@@ -10,12 +10,12 @@ order: 1
 
 A simple image component that only provides its own image loading detection and automatic lazy loading features.
 
-## Basic usage
+## CASE
 
-<code src="./demo/index.tsx"></code>
+<code src="./demo/index.tsx">Base</code>
 
 ## API
 
-| Properties       | Description                                                                  | type   | Default value |
-| ---------------- | ---------------------------------------------------------------------------- | ------ | ------------- |
-| loadingClassName | The class when in loading state, allowing users to customize loading styles. | string | ""            |
+| Properties       | Description                                                                  | type     | Default |
+| ---------------- | ---------------------------------------------------------------------------- | -------- | ------- |
+| loadingClassName | The class when in loading state, allowing users to customize loading styles. | `string` | `""`    |

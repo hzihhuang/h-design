@@ -1,7 +1,7 @@
 ---
 hero:
   title: Super⚡️HZH
-  description: react 组件存放处，此处组件皆为本人所写
+  description: react 组件存放处，案例使用 tailwindcss 编写
   actions:
     - text: 个人博客 👀
       link: https://super-zihao.gitee.io/blog/

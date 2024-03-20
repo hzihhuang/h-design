@@ -9,8 +9,8 @@
     "downlevelIteration": true,
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "H-Design": ["src"],
-      "H-Design/*": ["src/*", "*"]
+      "HDesign": ["src"],
+      "HDesign/*": ["src/*", "*"]
     }
   },
   "include": [".dumirc.ts", "src/**/*"]
