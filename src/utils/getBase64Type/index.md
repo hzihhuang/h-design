@@ -9,7 +9,3 @@ order: 2
 # getBase64Type
 
 获取 base64 类型
-
-```tsx ｜ pure
-
-```

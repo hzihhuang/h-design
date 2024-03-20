@@ -21,8 +21,8 @@ The example has a throttling time of 1000ms, quickly click `+1` to try it.
 
 | Param | Description         | Type     | Default |
 | ----- | ------------------- | -------- | ------- |
-| value | Initial State Value | `T`      | -       |
-| delay | throttling time     | `number` | -       |
+| value | Initial State Value | `T`      | `-`     |
+| delay | throttling time     | `number` | `-`     |
 
 ## Result
 

@@ -14,9 +14,7 @@ function useDebounceState<T>(
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
   const handlerChangeState: Dispatch<SetStateAction<T>> = useCallback(
     (v) => {
-      if (timer.current) {
-        clearTimeout(timer.current);
-      }
+      clearTimeout(timer.current);
       timer.current = setTimeout(
         // @ts-ignore
         () =>
