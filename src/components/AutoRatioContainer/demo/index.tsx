@@ -44,11 +44,11 @@ const Demo = () => {
         </div>
       </div>
       <AutoRatioContainer
-        parentClassName="bg-slate-400 resize"
-        className="overflow-hidden"
-        parentStyle={{ padding }}
+        className="bg-slate-400 resize"
+        boxClassName="overflow-hidden"
+        style={{ padding }}
         ratio={ratio}
-        style={{ borderRadius: radius }}
+        boxStyle={{ borderRadius: radius }}
       >
         <img
           className="w-full h-full block"

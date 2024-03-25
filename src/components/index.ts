@@ -4,6 +4,6 @@ export { default as Sidebar } from './Sidebar';
 export { default as SimpleImg } from './SimpleImg';
 
 export type {
-  Props as HighlightTextareaProps,
+  HighlightTextareaProps,
   HighlightTextareaRef,
 } from './HighlightTextarea';

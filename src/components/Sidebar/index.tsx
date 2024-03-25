@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { isNil } from 'lodash-es';
 import React, {
   CSSProperties,
@@ -173,7 +174,7 @@ const Sidebar: React.FC<Props> = ({
   }, [offset]);
 
   return createPortal(
-    <div className={`sidebar ${className}`} style={sidebarStyle}>
+    <div className={classNames('sidebar', className)} style={sidebarStyle}>
       <div
         className={`sidebar-${direction}`}
         style={{ ...directionMemo, ...translate }}

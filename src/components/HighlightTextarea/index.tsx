@@ -21,13 +21,19 @@ export interface HighlightTextareaRef {
   containerRef: React.RefObject<HTMLDivElement>;
 }
 
-export type Props = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> &
+export type HighlightTextareaProps = Omit<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  'value'
+> &
   previewElementOptions;
 /**
  * 支持错误文案高亮，以及的输入框
  *
  */
-const HighlightTextarea = forwardRef<HighlightTextareaRef, Props>(
+const HighlightTextarea = forwardRef<
+  HighlightTextareaRef,
+  HighlightTextareaProps
+>(
   (
     {
       className,
@@ -81,13 +87,13 @@ const HighlightTextarea = forwardRef<HighlightTextareaRef, Props>(
         <div className="highlight-textarea">
           <textarea
             {...resetProps}
-            className={classNames('highlight-textarea-textarea')}
+            className="highlight-textarea-textarea"
             onChange={handlerChange}
             value={currentValue}
             ref={textareaRef}
           />
           <div
-            className={classNames('highlight-textarea-box')}
+            className="highlight-textarea-box"
             onClick={handlerBoxClick}
             contentEditable="plaintext-only"
             suppressContentEditableWarning
