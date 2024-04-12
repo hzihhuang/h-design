@@ -12,6 +12,7 @@ else
 fi
 
 # 推送 gh-pages 分支到 gitee 的 master 分支
+git pull
 git push gitee origin/gh-pages:master -f
 
 # 检查推送是否成功
