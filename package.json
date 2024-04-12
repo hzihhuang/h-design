@@ -13,13 +13,14 @@
     "build:watch": "father dev",
     "dev": "dumi dev",
     "docs:build": "dumi build",
-    "docs:deploy": "npm run docs:build && gh-pages -d docs-dist",
+    "docs:deploy": "npm run docs:build && gh-pages -d docs-dist && npm run publish",
     "doctor": "father doctor",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
+    "publish": "bash publish.sh",
     "start": "npm run dev"
   },
   "commitlint": {
