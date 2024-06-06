@@ -5,12 +5,15 @@ const Index: React.FC = (props) => {
   const {} = props;
 
   return (
-    <div className="flex gap-8 items-center">
-      <SimpleImg
-        className="w-40 h-40 rounded-xl"
-        loadingClassName="bg-slate-600"
-        src="https://images.pexels.com/photos/19601923/pexels-photo-19601923.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-      />
+    <div className="flex flex-col gap-8 items-center h-52 overflow-auto">
+      {Array.from({ length: 20 }).map((_, idx) => (
+        <SimpleImg
+          className="w-40 h-40 rounded-xl shrink-0"
+          loadingClassName="bg-slate-600"
+          src={`https://picsum.photos/1000?random=${idx}`}
+          key={idx}
+        />
+      ))}
     </div>
   );
 };

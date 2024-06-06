@@ -12,7 +12,7 @@ order: 1
 
 ## 案例
 
-<code src="./demo/index.tsx">基础</code>
+<code src="./demo/index.tsx" description="最基础使用方法，可以打开 F12 查看图片的 src 属性，懒加载功能是否生效">基础</code>
 
 ## API
 
