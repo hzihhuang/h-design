@@ -15,7 +15,6 @@
     background: var(--scroll-thumb-background, #000);
     border: var(--scroll-thumb-border);
     opacity: var(--scroll-thumb-opacity, 1);
-    transition-property: transform;
     transition-duration: 0.2s;
     border-radius: var(--scroll-thumb-radius, 999px);
     display: none;
@@ -26,21 +25,31 @@
     &.scroll-thumb-x {
       left: 0;
       bottom: var(--scroll-thumb-gap, 4px);
-      width: 20%;
       height: var(--scroll-thumb-size, 4px);
+      transition-property: height, background, bottom;
       &.active,
       &:hover {
-        transform: scaleY(1.5);
+        bottom: var(--scroll-thumb-hover-gap, var(--scroll-thumb-gap, 4px));
+        background: var(--scroll-thumb-hover-background, var(--scroll-thumb-background, #000));
+        border: var(--scroll-thumb-hover-border, var(--scroll-thumb-border));
+        opacity: var(--scroll-thumb-hover-opacity, var(--scroll-thumb-opacity, 1));
+        border-radius: var(--scroll-thumb-hover-radius, var(--scroll-thumb-radius, 999px));
+        height: var(--scroll-thumb-hover-size, var(--scroll-thumb-size, 4px));
       }
     }
     &.scroll-thumb-y {
       top: 0;
       right: var(--scroll-thumb-gap, 4px);
       width: var(--scroll-thumb-size, 4px);
-      height: 20%;
+      transition-property: width, background, right;
       &.active,
       &:hover {
-        transform: scaleX(1.5);
+        right: var(--scroll-thumb-hover-gap, var(--scroll-thumb-gap, 4px));
+        background: var(--scroll-thumb-hover-background, var(--scroll-thumb-background, #000));
+        border: var(--scroll-thumb-hover-border, var(--scroll-thumb-border));
+        opacity: var(--scroll-thumb-hover-opacity, var(--scroll-thumb-opacity, 1));
+        border-radius: var(--scroll-thumb-hover-radius, var(--scroll-thumb-radius, 999px));
+        width: var(--scroll-thumb-hover-size, var(--scroll-thumb-size, 4px));
       }
     }
   }
