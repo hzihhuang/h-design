@@ -7,9 +7,9 @@ if git remote | grep -q gitee; then
     echo "远程仓库已存在，执行下一步..."
 else
     # gitee 仓库
-    git remote add gitee https://gitee.com/hzihhuang/h-tools.git
+    git remote add gitee https://gitee.com/hzihhuang/h-design.git
     # github 仓库
-    git remote add github https://github.com/hzihhuang-site/h-tools.git
+    git remote add github https://github.com/hzihhuang-site/h-design.git
     echo "成功添加 Gitee 远程仓库，执行下一步..."
 fi
 
