@@ -26,7 +26,7 @@ fi
 
 # 检查推送是否成功
 if [ $? -eq 0 ]; then
-    echo "推送 gitee 成功"
+    echo "推送成功"
 else
     echo "出现错误，请检查..."
     exit 1
