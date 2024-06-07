@@ -9,7 +9,6 @@ const Index: React.FC = (props) => {
       {Array.from({ length: 20 }).map((_, idx) => (
         <SimpleImg
           className="w-40 h-40 rounded-xl shrink-0"
-          loadingClassName="bg-slate-600"
           src={`https://picsum.photos/1000?random=${idx}`}
           key={idx}
         />

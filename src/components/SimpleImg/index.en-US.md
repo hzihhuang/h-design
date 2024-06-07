@@ -12,10 +12,4 @@ A simple image component that only provides its own image loading detection and 
 
 ## CASE
 
-<code src="./demo/index.tsx">Base</code>
-
-## API
-
-| Properties       | Description                                                                  | type     | Default |
-| ---------------- | ---------------------------------------------------------------------------- | -------- | ------- |
-| loadingClassName | The class when in loading state, allowing users to customize loading styles. | `string` | `""`    |
+<code src="./demo/index.tsx" description="You can open F12 to view the src attribute of the image and check if the lazy loading function is effective">Base</code>
