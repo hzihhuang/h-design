@@ -1,0 +1,111 @@
+.check-container {
+  --primary: #3b78f6;
+  --gray: #d9d9d9;
+  position: relative;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: var(--check-container-stoke) solid var(--primary);
+    border-radius: var(--check-container-radius);
+    width: calc(100% + (var(--check-container-stoke) * 2) + (var(--check-container-gap) * 2));
+    height: calc(100% + (var(--check-container-stoke) * 2) + (var(--check-container-gap) * 2));
+    pointer-events: none;
+    user-select: none;
+    opacity: 0;
+    transition: all .2s;
+    transform: translate(-50%, -50%);
+  }
+  // 选中外层 border
+  &.checked {
+    .check-element { opacity: 1 }
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  // 选中图标显示逻辑
+  .always-element,
+  .hover-element,
+  .check-element {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    z-index: 20;
+    transition: all .2s;
+  }
+  .check-element,
+  .hover-element { opacity: 0 }
+  &:hover {
+    .check-element,
+    .hover-element{
+      opacity: 1;
+    }
+  }
+
+
+  // 选中样式 —— 单选
+  .radio-check {
+    width: var(--check-container-size);
+    height: var(--check-container-size);
+    border-radius: 50%;
+    border: calc(var(--check-container-size) / 16) solid var(--gray);
+    background-color: white;
+    transition: border 0.2s;
+    &.checked {
+      border: calc(var(--check-container-size) / 3) solid var(--primary);
+    }
+    &:hover {
+      border-color: var(--primary);
+    }
+  }
+
+  // 选中样式 —— 多选
+  .checkbox-check {
+    position: relative;
+    width: var(--check-container-size);
+    height: var(--check-container-size);
+    border-radius: calc(var(--check-container-size) / 4);
+    border: calc(var(--check-container-size) / 20) solid var(--gray);
+    background-color: white;
+    transition-property: border, background;
+    transition-duration: .2s;
+
+    &:hover {
+      border-color: var(--primary);
+    }
+
+    &::after {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      top: 49%;
+      inset-inline-start: 22%;
+      display: table;
+      width: calc(var(--check-container-size) / 14 * 5);
+      height: calc(var(--check-container-size) / 14 * 8);
+      border: calc(var(--check-container-size) / 8) solid white;
+      border-top: 0;
+      border-left: 0;
+      transition: all .2s;
+      transform: rotate(45deg) translate(-50%, -50%);
+      scale: 0;
+      opacity: 0;
+    }
+
+    &.checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+
+      &::after {
+        opacity: 1;
+        scale: 1;
+      }
+    }
+  }
+}

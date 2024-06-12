@@ -14,7 +14,7 @@ order: 1
 
 ## 演示
 
-<code src="./demo" description="这个例子防抖时间为 1000ms，快速点击 +1 进行尝试">例子</code>
+<code src="./demo" description="这个例子防抖时间为 1000ms，快速点击 +1 进行尝试">Demo</code>
 
 ## Params
 

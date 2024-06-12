@@ -14,7 +14,7 @@ When fast switching, use `useDebounceState` instead of `useState` to reduce the 
 
 ## Example
 
-<code src="./demo" description="The example has a debounce time of 1000ms, quickly click `+1` to try it.">demo</code>
+<code src="./demo" description="The example has a debounce time of 1000ms, quickly click `+1` to try it.">Demo</code>
 
 ## Params
 

@@ -1,9 +1,9 @@
 ---
 title: HighlightTextarea
 group:
-  title: micro
+  title: utils
   order: 2
-order: 2
+order: 1
 ---
 
 # HighlightTextarea

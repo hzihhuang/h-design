@@ -1,9 +1,9 @@
 ---
 title: HighlightTextarea
 group:
-  title: 微组件
+  title: 功能性
   order: 2
-order: 2
+order: 1
 ---
 
 # HighlightTextarea
@@ -12,9 +12,9 @@ order: 2
 
 ## 案例
 
-<code src="./demo/index.tsx" description="在这个案例中，使用的默认的高亮样式，对 react、dumi 两个文字进行高亮">基础用法</code>
+<code src="./demo/index.tsx" description="在这个案例中，使用的默认的高亮样式，对 react、dumi 两个文字进行高亮">基础</code>
 
-<code src="./demo/demo2.tsx" description="在这个案例中，分别对react、dumi 两个文字进行了不同颜色的高亮，还可以为其自定义事件等高级功能">高级用法</code>
+<code src="./demo/demo2.tsx" description="在这个案例中，分别对react、dumi 两个文字进行了不同颜色的高亮，还可以为其自定义事件等高级功能">高级</code>
 
 ## API
 

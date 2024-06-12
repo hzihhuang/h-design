@@ -3,7 +3,7 @@ title: Sidebar
 group:
   title: 功能性
   order: 1
-order: 2
+order: 3
 ---
 
 # Sidebar
