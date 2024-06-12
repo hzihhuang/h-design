@@ -1,8 +1,8 @@
-import { useThrottlingState } from 'HDesign';
+import { useThrottleState } from 'HDesign';
 import React from 'react';
 
 const Index = () => {
-  const [count, setThrottlingCount, setCount] = useThrottlingState<number>(
+  const [count, setThrottlingCount, setCount] = useThrottleState<number>(
     0,
     1000,
   );

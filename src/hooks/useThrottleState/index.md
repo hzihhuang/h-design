@@ -1,16 +1,16 @@
 ---
-title: useThrottlingState
+title: useThrottleState
 group:
   title: 状态
   order: 1
 order: 2
 ---
 
-# useThrottlingState
+# useThrottleState
 
 节流 State
 
-快速切换时，使用 `useThrottlingState` 代替 `useState` 来减少渲染次数。
+快速切换时，使用 `useThrottleState` 代替 `useState` 来减少渲染次数。
 
 ## 演示
 

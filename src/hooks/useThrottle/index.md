@@ -1,11 +1,11 @@
 ---
-title: useThrottling
+title: useThrottle
 group:
   title: 函数
   order: 2
 order: 2
 ---
 
-# useThrottling
+# useThrottle
 
 节流函数

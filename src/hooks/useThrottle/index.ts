@@ -1,7 +1,7 @@
 import { DependencyList, useCallback, useEffect, useRef } from 'react';
 
 const DEFAULT_DEPS: DependencyList = [];
-function useThrottling<T>(fn: T, delay: number, deps = DEFAULT_DEPS) {
+function useThrottle<T>(fn: T, delay: number, deps = DEFAULT_DEPS) {
   const { current } = useRef<any>({ fn, timer: null });
   useEffect(() => {
     current.fn = fn;
@@ -18,4 +18,4 @@ function useThrottling<T>(fn: T, delay: number, deps = DEFAULT_DEPS) {
   return callback;
 }
 
-export default useThrottling;
+export default useThrottle;

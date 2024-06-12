@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction, useCallback, useRef, useState } from 'react';
  * @returns [start, setDebouncedState, setStart]
  * @description 带节流的功能 useState
  */
-function useThrottlingState<T>(
+function useThrottleState<T>(
   value: T,
   delay: number,
 ): [T, Dispatch<SetStateAction<T>>, Dispatch<SetStateAction<T>>] {
@@ -43,4 +43,4 @@ function useThrottlingState<T>(
   return [throttledValue, handlerChangeState, immediatelyChangeState];
 }
 
-export default useThrottlingState;
+export default useThrottleState;

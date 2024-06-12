@@ -29,7 +29,7 @@ const Index: React.FC = () => {
         </button>
       </div>
       <div
-        className="flex items-center justify-center rounded-xl border h-48 w-48 resize overflow-hidden bg-slate-700"
+        className="flex items-center justify-center rounded-xl border h-48 w-48 resize overflow-hidden bg-slate-500"
         ref={box2}
       >
         <button

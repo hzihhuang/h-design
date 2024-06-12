@@ -1,16 +1,16 @@
 ---
-title: useThrottlingState
+title: useThrottleState
 group:
   title: state
   order: 1
 order: 2
 ---
 
-# useThrottlingState
+# useThrottleState
 
 throttling State
 
-When fast switching, use `useThrottlingState` instead of `useState` to reduce the number of renderings.
+When fast switching, use `useThrottleState` instead of `useState` to reduce the number of renderings.
 
 ## Example
 
