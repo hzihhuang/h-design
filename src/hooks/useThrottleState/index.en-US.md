@@ -14,8 +14,7 @@ When fast switching, use `useThrottleState` instead of `useState` to reduce the 
 
 ## Example
 
-The example has a throttling time of 1000ms, quickly click `+1` to try it.
-<code src="./demo"></code>
+<code src="./demo" description="The example has a throttling time of 1000ms, quickly click `+1` to try it.">demo</code>
 
 ## Params
 

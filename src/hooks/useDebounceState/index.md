@@ -3,7 +3,7 @@ title: useDebounceState
 group:
   title: 状态
   order: 1
-order: 2
+order: 1
 ---
 
 # useDebounceState
@@ -14,8 +14,7 @@ order: 2
 
 ## 演示
 
-这个例子防抖时间为 1000ms，快速点击 +1 进行尝试
-<code src="./demo"></code>
+<code src="./demo" description="这个例子防抖时间为 1000ms，快速点击 +1 进行尝试">例子</code>
 
 ## Params
 
