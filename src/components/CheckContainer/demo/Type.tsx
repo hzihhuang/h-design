@@ -1,4 +1,4 @@
-import { CheckContainer, SimpleImg } from 'HDesign';
+import { CheckContainer } from 'HDesign';
 import React from 'react';
 
 const Type: React.FC = () => {
@@ -15,8 +15,8 @@ const Type: React.FC = () => {
             mode="always"
             onClick={setChecked}
           >
-            <SimpleImg
-              className="w-40 h-40 rounded-md"
+            <img
+              className="w-40 h-40 rounded-md bg-gray-400"
               src="https://picsum.photos/400"
             />
           </CheckContainer>
