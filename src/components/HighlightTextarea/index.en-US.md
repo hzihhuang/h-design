@@ -2,8 +2,8 @@
 title: HighlightTextarea
 group:
   title: utils
-  order: 2
-order: 1
+  order: 1
+order: 4
 ---
 
 # HighlightTextarea

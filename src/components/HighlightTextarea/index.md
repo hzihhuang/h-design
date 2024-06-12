@@ -2,8 +2,8 @@
 title: HighlightTextarea
 group:
   title: 功能性
-  order: 2
-order: 1
+  order: 1
+order: 4
 ---
 
 # HighlightTextarea
