@@ -4,7 +4,7 @@ hero:
   description: react 组件存放处，案例使用 tailwindcss 编写
   actions:
     - text: 个人博客 👀
-      link: https://super-zihao.gitee.io/blog/
+      link: https://hzihhuang-site.github.io/h-blog/
     - text: CodePen ⭐️
       link: https://codepen.io/hzihhuang
 features:
