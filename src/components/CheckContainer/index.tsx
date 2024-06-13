@@ -1,8 +1,15 @@
 import classNames from 'classnames';
-import React, { CSSProperties, ReactNode, useMemo } from 'react';
+import React, {
+  CSSProperties,
+  ReactNode,
+  forwardRef,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+} from 'react';
 import './index.scss';
 
-type CheckContainerProps = {
+interface CheckContainerProps {
   className?: string;
   style?: CSSProperties;
   children?: ReactNode;
@@ -40,83 +47,105 @@ type CheckContainerProps = {
    * @default 'checked'
    */
   mode?: 'hover' | 'checked' | 'always';
-};
+}
+
+interface CheckContainerRef {
+  containerRef: React.RefObject<HTMLDivElement>;
+}
 
 /**
  * 选中容器
  * 用来为元素添加选中功能
  */
-const CheckContainer: React.FC<CheckContainerProps> = ({
-  className = '',
-  style,
-  children,
-  checked = false,
-  onClick,
-  radius = 8,
-  strokeWidth = 2,
-  gap = 2,
-  size = 16,
-  type = 'radio',
-  mode = 'checked',
-}) => {
-  const modeElement = useMemo(() => {
-    switch (type) {
-      case 'radio':
-        return (
-          <div
-            className={classNames('radio-check', { checked: checked })}
-          ></div>
-        );
-      case 'checkbox':
-        return (
-          <div
-            className={classNames('checkbox-check', { checked: checked })}
-          ></div>
-        );
-      default:
-        return null;
-    }
-  }, [type, checked]);
+const CheckContainer = forwardRef<CheckContainerRef, CheckContainerProps>(
+  (props, ref) => {
+    const {
+      className = '',
+      style,
+      children,
+      checked = false,
+      onClick,
+      radius = 8,
+      strokeWidth = 2,
+      gap = 2,
+      size = 16,
+      type = 'radio',
+      mode = 'checked',
+    } = props;
 
-  // 角标
-  const selectMark = useMemo(() => {
-    if (!modeElement) return null;
-    switch (mode) {
-      // hover 才会出现
-      case 'hover':
-        return <div className="hover-element">{modeElement}</div>;
-      // hover 才会出现 选中之后一直出现
-      case 'checked':
-        return (
-          <div
-            className="check-element"
-            style={{ opacity: checked ? 1 : undefined }}
-          >
-            {modeElement}
-          </div>
-        );
-      // 一直存在
-      case 'always':
-        return <div className="always-element">{modeElement}</div>;
-    }
-  }, [mode, modeElement]);
+    // 角标类型
+    const typeElement = useMemo(() => {
+      switch (type) {
+        case 'radio':
+          return (
+            <div
+              className={classNames('radio-check', { checked: checked })}
+            ></div>
+          );
+        case 'checkbox':
+          return (
+            <div
+              className={classNames('checkbox-check', { checked: checked })}
+            ></div>
+          );
+        default:
+          return null;
+      }
+    }, [type, checked]);
 
-  return (
-    <div
-      className={classNames('check-container', className, { checked: checked })}
-      onClick={() => onClick?.(!checked)}
-      style={{
-        ...style,
-        // @ts-ignore 圆角
-        '--check-container-radius': `${radius}px`,
-        '--check-container-stoke': `${strokeWidth}px`,
-        '--check-container-gap': `${gap}px`,
-        '--check-container-size': `${size}px`,
-      }}
-    >
-      {children}
-      {selectMark}
-    </div>
-  );
-};
+    // 显示模式
+    const modeElement = useMemo(() => {
+      if (!typeElement) return null;
+      switch (mode) {
+        // hover 才会出现
+        case 'hover':
+          return <div className="hover-element">{typeElement}</div>;
+        // hover 才会出现 选中之后一直出现
+        case 'checked':
+          return (
+            <div
+              className="check-element"
+              style={{ opacity: checked ? 1 : undefined }}
+            >
+              {typeElement}
+            </div>
+          );
+        // 一直存在
+        case 'always':
+          return <div className="always-element">{typeElement}</div>;
+      }
+    }, [mode, typeElement]);
+
+    // 容器 ref
+    const containerRef = useRef<HTMLDivElement>(null);
+    useImperativeHandle(
+      ref,
+      () => ({
+        containerRef,
+      }),
+      [],
+    );
+
+    return (
+      <div
+        className={classNames('check-container', className, {
+          checked: checked,
+        })}
+        onClick={() => onClick?.(!checked)}
+        style={{
+          ...style,
+          // @ts-ignore 圆角
+          '--check-container-radius': `${radius}px`,
+          '--check-container-stoke': `${strokeWidth}px`,
+          '--check-container-gap': `${gap}px`,
+          '--check-container-size': `${size}px`,
+        }}
+        ref={containerRef}
+      >
+        {children}
+        {modeElement}
+      </div>
+    );
+  },
+);
 export default CheckContainer;

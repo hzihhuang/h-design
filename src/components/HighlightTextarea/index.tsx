@@ -28,7 +28,6 @@ export type HighlightTextareaProps = Omit<
   previewElementOptions;
 /**
  * 支持错误文案高亮，以及的输入框
- *
  */
 const HighlightTextarea = forwardRef<
   HighlightTextareaRef,
