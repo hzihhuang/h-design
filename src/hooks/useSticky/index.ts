@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
 /** 往上找距离最近的一个有Y轴滚动条的父元素 */
 function findClosestScrollableElement(
@@ -42,7 +42,7 @@ function useSticky(options: UseStickyOptions) {
 
   const translateX = useRef('0');
   const translateY = useRef('0');
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!stickyElement.current) return;
     const element =
       scrollElement.current ??
