@@ -78,8 +78,11 @@ function useSticky(options: UseStickyOptions) {
       }
       stickyElement.current.style.transform = `translate(${translateY.current}, ${translateX.current})`;
     };
-    element.addEventListener('scroll', callback);
-    return () => element.removeEventListener('scroll', callback);
+    const frameCallback = requestAnimationFrame
+      ? () => requestAnimationFrame(callback)
+      : callback;
+    element.addEventListener('scroll', frameCallback);
+    return () => element.removeEventListener('scroll', frameCallback);
   }, [top]);
 
   return { stickyElement, scrollElement };

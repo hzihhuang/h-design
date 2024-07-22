@@ -6,18 +6,28 @@ const resizeElementArr = new WeakMap();
 /** 单例模式，整个项目只能存在一个 */
 let rObserver: ResizeObserver;
 
-type callbackType = (e: ResizeObserverEntry, observer: ResizeObserver) => void;
+export type ResizeCallback = (
+  e: ResizeObserverEntry,
+  observer: ResizeObserver,
+) => void;
+export type ResizeObserverOptions = {
+  /** 是否使用动画帧计算 */
+  needRequestAnimationFrame?: boolean;
+};
 
 /**
  * @description 订阅元素尺寸变化
  * @param callback (e: ResizeObserverEntry) => void
  * @param target Element
+ * @param options ResizeObserverOptions
  * @returns () => void（取消订阅）
  */
 function useResize<T extends Element>(
-  callback: callbackType,
+  callback: ResizeCallback,
   target: T | RefObject<T | undefined>,
-): () => void {
+  options?: ResizeObserverOptions,
+) {
+  const { needRequestAnimationFrame = true } = options ?? {};
   let currentTarget: T | null | undefined;
   useEffect(() => {
     currentTarget = (target as RefObject<T>).current
@@ -27,10 +37,16 @@ function useResize<T extends Element>(
     if (!rObserver) {
       rObserver = new ResizeObserver((entries) => {
         entries.forEach((entry) => {
-          (resizeElementArr.get(entry.target) as callbackType)?.(
-            entry,
-            rObserver,
+          const isRequestAnimationFrame = !!(
+            needRequestAnimationFrame && requestAnimationFrame
           );
+          if (isRequestAnimationFrame) {
+            requestAnimationFrame(() =>
+              resizeElementArr.get(entry.target)(entry, rObserver),
+            );
+          } else {
+            resizeElementArr.get(entry.target)(entry, rObserver);
+          }
         });
       });
     }
@@ -42,7 +58,7 @@ function useResize<T extends Element>(
       resizeElementArr.delete(currentTarget);
       rObserver.unobserve(currentTarget);
     };
-  }, []);
+  }, [callback, options]);
 
   return () => {
     if (!currentTarget) return;

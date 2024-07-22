@@ -22,6 +22,7 @@ Try dragging the bottom right corner of the grid to change the element’s size.
 | -------- | ---------------------------------------------------------- | ---------------------------------- | ------- |
 | callback | The callback function triggered by changes in element size | `(e: ResizeObserverEntry) => void` | -       |
 | target   | The subscribed element                                     | `Element`                          | -       |
+| options  | The options of the ResizeObserver                          | `ResizeObserverOptions`            | -       |
 
 ## Result
 

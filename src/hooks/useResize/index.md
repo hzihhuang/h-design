@@ -21,6 +21,7 @@ order: 1
 | -------- | ------------------------------ | ---------------------------------- | ------ |
 | callback | 元素尺寸发生改变触发的回调函数 | `(e: ResizeObserverEntry) => void` | -      |
 | target   | 订阅的元素                     | `Element`                          | -      |
+| options  | ResizeObserver 的配置项        | `ResizeObserverOptions`            | -      |
 
 ## Result
 

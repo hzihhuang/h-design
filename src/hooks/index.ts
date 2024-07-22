@@ -8,4 +8,5 @@ export { default as useThrottle } from './useThrottle';
 
 // 元素
 export { default as useResize } from './useResize';
+export type { ResizeCallback } from './useResize';
 export { default as useSticky } from './useSticky';
