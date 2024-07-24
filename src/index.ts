@@ -1,14 +1,10 @@
 // components
 export { default as AutoRatioContainer } from './components/AutoRatioContainer';
-export type { AutoRatioContainerProps, AutoRatioContainerRef } from './components/AutoRatioContainer';
+export type { AutoRatioContainerRef, AutoRatioContainerProps } from './components/AutoRatioContainer';
 export { default as CheckContainer } from './components/CheckContainer';
 export type { CheckContainerProps, CheckContainerRef } from './components/CheckContainer';
 export { default as HighlightTextarea } from './components/HighlightTextarea';
-export type {
-  HighlightTextareaProps,
-  HighlightTextareaRef,
-  previewElementOptions,
-} from './components/HighlightTextarea';
+export type { HighlightTextareaRef, previewElementOptions, HighlightTextareaProps } from './components/HighlightTextarea';
 export { default as Masonry } from './components/Masonry';
 export { default as ScrollContainer } from './components/ScrollContainer';
 export { default as Sidebar } from './components/Sidebar';
@@ -33,3 +29,4 @@ export { default as isArrayString } from './utils/isArrayString';
 export { default as isBase64Image } from './utils/isBase64Image';
 export { default as isObjectString } from './utils/isObjectString';
 export { default as isValidVariableName } from './utils/isValidVariableName';
+
