@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkHDesign=self.webpackChunkHDesign||[]).push([[7430],{40115:function(t,s,n){n.r(s),n.d(s,{demos:function(){return u}});var d=n(75271),_=n(84425),u={}},92555:function(t,s,n){n.r(s),n.d(s,{texts:function(){return _}});var d=n(84425);const _=[]}}]);
