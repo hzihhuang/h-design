@@ -20,8 +20,6 @@ const generateExports = (files, type) => {
       (match) => match[1],
     );
     const types = [...fileContent.matchAll(typeRegex)].map((match) => match[1]);
-
-    console.log(types);
     let expType = '';
     if (interfaces.length > 0 || types.length > 0) {
       const typeArr = [...new Set([...interfaces, ...types])].join(', ');
