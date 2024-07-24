@@ -1,14 +1,8 @@
 // components
 export { default as AutoRatioContainer } from './components/AutoRatioContainer';
-export type {
-  AutoRatioContainerProps,
-  AutoRatioContainerRef,
-} from './components/AutoRatioContainer';
+export type { AutoRatioContainerProps, AutoRatioContainerRef } from './components/AutoRatioContainer';
 export { default as CheckContainer } from './components/CheckContainer';
-export type {
-  CheckContainerProps,
-  CheckContainerRef,
-} from './components/CheckContainer';
+export type { CheckContainerProps, CheckContainerRef } from './components/CheckContainer';
 export { default as HighlightTextarea } from './components/HighlightTextarea';
 export type {
   HighlightTextareaProps,
