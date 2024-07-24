@@ -3,14 +3,13 @@ title: CheckContainer
 group:
   title: utils
   order: 1
-order: 2
 ---
 
 # CheckContainer
 
 A container that can provide a selected state for elements
 
-## 案例
+## CASE
 
 <code src="./demo/Type.tsx" description="There are three types of default, radio, and checkbox, and the component defaults to default">type</code>
 

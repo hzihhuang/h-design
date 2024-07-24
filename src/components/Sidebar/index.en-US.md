@@ -3,7 +3,6 @@ title: Sidebar
 group:
   title: utils
   order: 1
-order: 5
 ---
 
 # Sidebar

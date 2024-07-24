@@ -1,9 +1,9 @@
 ---
 title: HighlightTextarea
 group:
-  title: 功能性
-  order: 1
-order: 4
+  title: 微组件
+  order: 2
+order: 2
 ---
 
 # HighlightTextarea

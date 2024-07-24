@@ -3,7 +3,6 @@ title: AutoRatioContainer
 group:
   title: utils
   order: 1
-order: 1
 ---
 
 # AutoRatioContainer

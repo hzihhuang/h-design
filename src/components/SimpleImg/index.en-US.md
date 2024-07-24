@@ -3,7 +3,6 @@ title: SimpleImg
 group:
   title: micro
   order: 2
-order: 1
 ---
 
 # SimpleImg

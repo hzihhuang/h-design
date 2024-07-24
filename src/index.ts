@@ -9,6 +9,7 @@ export type {
   HighlightTextareaRef,
   previewElementOptions,
 } from './components/HighlightTextarea';
+export { default as Masonry } from './components/Masonry';
 export { default as ScrollContainer } from './components/ScrollContainer';
 export { default as Sidebar } from './components/Sidebar';
 export type { SidebarProps } from './components/Sidebar';

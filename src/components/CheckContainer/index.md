@@ -3,7 +3,6 @@ title: CheckContainer
 group:
   title: 功能性
   order: 1
-order: 2
 ---
 
 # CheckContainer
