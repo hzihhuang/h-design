@@ -1,18 +1,8 @@
 import React, { Fragment, ReactNode, useMemo } from 'react';
+import { previewElementOptions } from '../index';
 
 const DEFAULT_ARR: any[] = [];
 
-export interface previewElementOptions {
-  /** 当前值 */
-  value?: string;
-  /** 高亮文案 */
-  highlight?: string[];
-  /**
-   * 格式化高亮文案
-   * @description 可以自定义添加标签包裹，增加文案事件颜色等，但是请不要使用 margin、padding 等影响布局的样式
-   */
-  formatHighlight?: (val: string) => ReactNode;
-}
 function usePreviewElement({
   value = '',
   highlight = DEFAULT_ARR,

@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import './index.scss';
 
-interface CheckContainerProps {
+export interface CheckContainerProps {
   className?: string;
   style?: CSSProperties;
   children?: ReactNode;
@@ -49,7 +49,7 @@ interface CheckContainerProps {
   mode?: 'hover' | 'checked' | 'always';
 }
 
-interface CheckContainerRef {
+export interface CheckContainerRef {
   containerRef: React.RefObject<HTMLDivElement>;
 }
 

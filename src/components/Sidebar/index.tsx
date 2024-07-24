@@ -11,7 +11,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import './index.scss';
 
-export type Props = {
+export interface SidebarProps {
   /**
    * @description 类名
    * @default ""
@@ -65,9 +65,9 @@ export type Props = {
    * @description 子元素
    */
   children?: ReactNode;
-};
+}
 
-const Sidebar: React.FC<Props> = ({
+const Sidebar: React.FC<SidebarProps> = ({
   className = '',
   style,
   target,

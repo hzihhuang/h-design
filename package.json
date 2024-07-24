@@ -9,9 +9,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "father build",
+    "autoExport": "node ./scripts/autoExport.js",
+    "build": "npm run autoExport && father build",
     "build:watch": "father dev",
-    "dev": "dumi dev",
+    "dev": "npm run autoExport && dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "npm run docs:build && gh-pages -d docs-dist && npm run publish",
     "doctor": "father doctor",
