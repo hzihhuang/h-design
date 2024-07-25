@@ -3,7 +3,6 @@ title: isObjectString
 group:
   title: 布尔
   order: 1
-order: 2
 ---
 
 # isObjectString

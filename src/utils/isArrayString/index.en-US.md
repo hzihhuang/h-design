@@ -3,7 +3,6 @@ title: isArrayString
 group:
   title: boolean
   order: 1
-order: 1
 ---
 
 # isArrayString

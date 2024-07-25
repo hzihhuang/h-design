@@ -3,7 +3,6 @@ title: getBase64Type
 group:
   title: 类型
   order: 3
-order: 2
 ---
 
 # getBase64Type

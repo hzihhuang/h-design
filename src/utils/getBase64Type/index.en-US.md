@@ -3,7 +3,6 @@ title: getBase64Type
 group:
   title: type
   order: 3
-order: 1
 ---
 
 # getBase64Type

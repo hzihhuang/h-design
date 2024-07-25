@@ -3,7 +3,6 @@ title: getQuery
 group:
   title: url
   order: 2
-order: 1
 ---
 
 # getQuery

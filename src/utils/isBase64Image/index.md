@@ -3,7 +3,6 @@ title: isBase64Image
 group:
   title: 布尔
   order: 1
-order: 4
 ---
 
 # isBase64Image

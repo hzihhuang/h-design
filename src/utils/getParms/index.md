@@ -3,7 +3,6 @@ title: getParms
 group:
   title: url
   order: 2
-order: 2
 ---
 
 # getParms
