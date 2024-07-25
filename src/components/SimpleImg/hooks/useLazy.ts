@@ -5,11 +5,7 @@ function findClosestScrollableElement(element: Element) {
   let parent = element.parentElement;
   while (parent) {
     // 检查元素是否有滚动条
-    if (
-      parent.scrollHeight > parent.clientHeight ||
-      parent.scrollWidth > parent.clientWidth
-    )
-      return parent;
+    if (parent.scrollHeight > parent.clientHeight || parent.scrollWidth > parent.clientWidth) return parent;
     parent = parent.parentElement;
   }
   return document; // 如果没有找到有滚动条的父元素，则返回整个文档
@@ -25,7 +21,7 @@ interface UseLazyEvent {
  */
 function useLazy({ imgRef, src }: UseLazyEvent) {
   useEffect(() => {
-    if (!imgRef.current || src === undefined) return;
+    if (!imgRef.current || src === void 0) return;
     const callback: IntersectionObserverCallback = (e) => {
       e.forEach((i) => {
         if (i.isIntersecting) {

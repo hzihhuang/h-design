@@ -6,10 +6,7 @@ import { Dispatch, SetStateAction, useCallback, useRef, useState } from 'react';
  * @returns [start, setDebouncedState, setStart]
  * @description 带节流的功能 useState
  */
-function useThrottleState<T>(
-  value: T,
-  delay: number,
-): [T, Dispatch<SetStateAction<T>>, Dispatch<SetStateAction<T>>] {
+function useThrottleState<T>(value: T, delay: number): [T, Dispatch<SetStateAction<T>>, Dispatch<SetStateAction<T>>] {
   const timer = useRef<NodeJS.Timeout>();
   const [throttledValue, setThrottledValue] = useState<T>(value);
 
@@ -18,7 +15,7 @@ function useThrottleState<T>(
       if (timer.current) return;
       timer.current = setTimeout(() => {
         clearTimeout(timer.current);
-        timer.current = undefined;
+        timer.current = void 0;
         setThrottledValue((v2) =>
           // @ts-ignore
           typeof v === 'function' ? v(v2) : v,
@@ -32,7 +29,7 @@ function useThrottleState<T>(
     (v) => {
       if (timer.current) {
         clearTimeout(timer.current);
-        timer.current = undefined;
+        timer.current = void 0;
       }
       // @ts-ignore
       setThrottledValue((v2) => (typeof v === 'function' ? v(v2) : v));

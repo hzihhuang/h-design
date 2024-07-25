@@ -32,8 +32,8 @@ const SimpleImg: React.FC<Props> = ({ className, src, style, wrapClassName, wrap
   );
   const wrapStyleMemo: CSSProperties = useMemo(
     () => ({
-      pointerEvents: loading ? 'none' : undefined,
-      userSelect: loading ? 'none' : undefined,
+      pointerEvents: loading ? 'none' : void 0,
+      userSelect: loading ? 'none' : void 0,
       backgroundColor: loading ? 'rgba(0, 0, 0, 0.06)' : 'transparent',
       borderRadius: radius,
       ...wrapStyle,
