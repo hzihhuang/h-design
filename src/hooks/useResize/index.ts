@@ -6,10 +6,7 @@ const resizeElementArr = new WeakMap();
 /** 单例模式，整个项目只能存在一个 */
 let rObserver: ResizeObserver;
 
-export type ResizeCallback = (
-  e: ResizeObserverEntry,
-  observer: ResizeObserver,
-) => void;
+export type ResizeCallback = (e: ResizeObserverEntry, observer: ResizeObserver) => void;
 export type ResizeObserverOptions = {
   /** 是否使用动画帧计算 */
   needRequestAnimationFrame?: boolean;
@@ -30,20 +27,14 @@ function useResize<T extends Element>(
   const { needRequestAnimationFrame = true } = options ?? {};
   let currentTarget: T | null | undefined;
   useEffect(() => {
-    currentTarget = (target as RefObject<T>).current
-      ? (target as RefObject<T>).current
-      : (target as T);
+    currentTarget = (target as RefObject<T>).current ? (target as RefObject<T>).current : (target as T);
     if (!currentTarget) return;
     if (!rObserver) {
       rObserver = new ResizeObserver((entries) => {
         entries.forEach((entry) => {
-          const isRequestAnimationFrame = !!(
-            needRequestAnimationFrame && requestAnimationFrame
-          );
+          const isRequestAnimationFrame = !!(needRequestAnimationFrame && requestAnimationFrame);
           if (isRequestAnimationFrame) {
-            requestAnimationFrame(() =>
-              resizeElementArr.get(entry.target)(entry, rObserver),
-            );
+            requestAnimationFrame(() => resizeElementArr.get(entry.target)(entry, rObserver));
           } else {
             resizeElementArr.get(entry.target)(entry, rObserver);
           }

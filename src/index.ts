@@ -15,8 +15,6 @@ export { default as ScrollContainer } from './components/ScrollContainer';
 export { default as Sidebar } from './components/Sidebar';
 export type { SidebarProps } from './components/Sidebar';
 export { default as SimpleImg } from './components/SimpleImg';
-export { default as TextTruncator } from './components/TextTruncator';
-export type { TextTruncatorProps } from './components/TextTruncator';
 
 // hooks
 export { default as useDebounce } from './hooks/useDebounce';
