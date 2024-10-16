@@ -1,0 +1,36 @@
+@property --skeleton-height {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 64px;
+}
+
+@property --skeleton-width {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 64px;
+}
+
+@property --skeleton-radius {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 4px;
+}
+
+.skeleton {
+  width: var(--skeleton-width);
+  height: var(--skeleton-height);
+  border-radius: var(--skeleton-radius);
+  
+  background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
