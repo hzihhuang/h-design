@@ -1,8 +1,8 @@
+import classNames from 'clsx';
 import React, { CSSProperties, ReactNode, useMemo } from 'react';
-import './index.scss';
-import classNames from 'classnames';
-import useMasonryResize from './hooks/useMasonryResize';
 import useMasonryCards from './hooks/useMasonryCards';
+import useMasonryResize from './hooks/useMasonryResize';
+import './index.scss';
 
 export type MasonryOptions = {
   /** 列数 */
@@ -27,23 +27,15 @@ export interface MasonryProps {
   options?: MasonryOptions;
 }
 
-const Masonry: React.FC<MasonryProps> = ({
-  className,
-  style,
-  options,
-  children,
-}) => {
-  const {
-    gap = 0,
-    itemWidth,
-    itemMinWidth = 300,
-    itemMaxWidth = 400,
-    column,
-  } = options ?? {};
-  const { currentItemMaxWidth, currentItemMinWidth } = useMemo(() => ({
-    currentItemMaxWidth: itemWidth ?? itemMaxWidth,
-    currentItemMinWidth: itemWidth ?? itemMinWidth,
-  }), [itemWidth, itemMaxWidth, itemMinWidth]);
+const Masonry: React.FC<MasonryProps> = ({ className, style, options, children }) => {
+  const { gap = 0, itemWidth, itemMinWidth = 300, itemMaxWidth = 400, column } = options ?? {};
+  const { currentItemMaxWidth, currentItemMinWidth } = useMemo(
+    () => ({
+      currentItemMaxWidth: itemWidth ?? itemMaxWidth,
+      currentItemMinWidth: itemWidth ?? itemMinWidth,
+    }),
+    [itemWidth, itemMaxWidth, itemMinWidth],
+  );
   /** 监听容器宽度变化 自适应 */
   const { containerRef, col } = useMasonryResize({
     currentItemMinWidth,
@@ -57,7 +49,7 @@ const Masonry: React.FC<MasonryProps> = ({
     currentItemMinWidth,
     children,
     col,
-  })
+  });
 
   return (
     <div className={classNames('masonry', className)} style={style} ref={containerRef}>

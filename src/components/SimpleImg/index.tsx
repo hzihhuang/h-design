@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import React, { CSSProperties, ImgHTMLAttributes, useMemo, useRef } from 'react';
 import useLazy from './hooks/useLazy';
 import useLoading from './hooks/useLoading';

@@ -3,7 +3,6 @@ title: HighlightTextarea
 group:
   title: micro
   order: 2
-order: 2
 ---
 
 # HighlightTextarea

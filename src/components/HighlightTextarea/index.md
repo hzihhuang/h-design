@@ -3,7 +3,6 @@ title: HighlightTextarea
 group:
   title: 微组件
   order: 2
-order: 2
 ---
 
 # HighlightTextarea

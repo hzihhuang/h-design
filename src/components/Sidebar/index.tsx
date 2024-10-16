@@ -1,13 +1,6 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import { isNil } from 'lodash-es';
-import React, {
-  CSSProperties,
-  ReactNode,
-  RefObject,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React, { CSSProperties, ReactNode, RefObject, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './index.scss';
 
@@ -80,23 +73,15 @@ const Sidebar: React.FC<SidebarProps> = ({
   children,
 }) => {
   /** 挂载到哪里，默认 body */
-  const [currentTarget, setCurrentTarget] = useState<HTMLElement>(
-    document.body,
-  );
+  const [currentTarget, setCurrentTarget] = useState<HTMLElement>(document.body);
   useEffect(() => {
     if (isNil(target)) return;
-    if (!!(target as any)?.current)
-      return setCurrentTarget(
-        (target as RefObject<HTMLElement>)?.current as HTMLElement,
-      );
+    if (!!(target as any)?.current) return setCurrentTarget((target as RefObject<HTMLElement>)?.current as HTMLElement);
     setCurrentTarget(target as HTMLElement);
   }, [target]);
 
   /** sidebar层级，默认 10 */
-  const zIndexMemo = useMemo(
-    () => ({ [isNil(zIndex) ? '' : '--sidebar-zIndex']: zIndex }),
-    [zIndex],
-  );
+  const zIndexMemo = useMemo(() => ({ [isNil(zIndex) ? '' : '--sidebar-zIndex']: zIndex }), [zIndex]);
 
   /** 位置 */
   const positionMemo = useMemo(() => {
@@ -167,18 +152,13 @@ const Sidebar: React.FC<SidebarProps> = ({
     if (!offset) return {};
     const { top, left, bottom, right } = offset;
     return {
-      transform: `translate(${left ?? (right ? -right : 0)}px, ${
-        top ?? (bottom ? -bottom : 0)
-      }px)`,
+      transform: `translate(${left ?? (right ? -right : 0)}px, ${top ?? (bottom ? -bottom : 0)}px)`,
     };
   }, [offset]);
 
   return createPortal(
     <div className={classNames('sidebar', className)} style={sidebarStyle}>
-      <div
-        className={`sidebar-${direction}`}
-        style={{ ...directionMemo, ...translate }}
-      >
+      <div className={`sidebar-${direction}`} style={{ ...directionMemo, ...translate }}>
         {children}
       </div>
     </div>,

@@ -1,11 +1,5 @@
-import classNames from 'classnames';
-import React, {
-  ReactNode,
-  TextareaHTMLAttributes,
-  forwardRef,
-  useImperativeHandle,
-  useRef,
-} from 'react';
+import classNames from 'clsx';
+import React, { ReactNode, TextareaHTMLAttributes, forwardRef, useImperativeHandle, useRef } from 'react';
 import useBaseValue from './hooks/useBaseValue';
 import useCursor from './hooks/useCursor';
 import usePreviewElement from './hooks/usePreviewElement';
@@ -32,30 +26,12 @@ export interface previewElementOptions {
   formatHighlight?: (val: string) => ReactNode;
 }
 
-export type HighlightTextareaProps = Omit<
-  TextareaHTMLAttributes<HTMLTextAreaElement>,
-  'value'
-> &
-  previewElementOptions;
+export type HighlightTextareaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value'> & previewElementOptions;
 /**
  * 支持错误文案高亮，以及的输入框
  */
-const HighlightTextarea = forwardRef<
-  HighlightTextareaRef,
-  HighlightTextareaProps
->(
-  (
-    {
-      className,
-      style,
-      value = '',
-      onChange,
-      highlight,
-      formatHighlight,
-      ...resetProps
-    },
-    ref,
-  ) => {
+const HighlightTextarea = forwardRef<HighlightTextareaRef, HighlightTextareaProps>(
+  ({ className, style, value = '', onChange, highlight, formatHighlight, ...resetProps }, ref) => {
     /** 暴露给外部 */
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);

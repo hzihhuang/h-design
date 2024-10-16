@@ -1,13 +1,5 @@
-import classNames from 'classnames';
-import React, {
-  ReactNode,
-  forwardRef,
-  useCallback,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from 'react';
+import classNames from 'clsx';
+import React, { ReactNode, forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import useResize, { ResizeCallback } from '../..//hooks/useResize';
 import './index.scss';
 
@@ -46,18 +38,8 @@ export interface AutoRatioContainerProps {
   children?: ReactNode;
 }
 
-const AutoRatioContainer = forwardRef<
-  AutoRatioContainerRef,
-  AutoRatioContainerProps
->((props, ref) => {
-  const {
-    ratio = 1,
-    children,
-    className = '',
-    boxStyle,
-    boxClassName = '',
-    style,
-  } = props;
+const AutoRatioContainer = forwardRef<AutoRatioContainerRef, AutoRatioContainerProps>((props, ref) => {
+  const { ratio = 1, children, className = '', boxStyle, boxClassName = '', style } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
   /** 根据比例判断以 width or height 为基准  */
@@ -94,11 +76,7 @@ const AutoRatioContainer = forwardRef<
   );
 
   return (
-    <div
-      className={classNames('auto-ratio-container', className)}
-      style={style}
-      ref={containerRef}
-    >
+    <div className={classNames('auto-ratio-container', className)} style={style} ref={containerRef}>
       <div
         className={classNames('auto-ratio-box', boxClassName)}
         style={{

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import React, { CSSProperties, ReactNode, forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
 import './index.scss';
 

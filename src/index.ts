@@ -15,6 +15,8 @@ export { default as ScrollContainer } from './components/ScrollContainer';
 export { default as Sidebar } from './components/Sidebar';
 export type { SidebarProps } from './components/Sidebar';
 export { default as SimpleImg } from './components/SimpleImg';
+export { default as TextTruncator } from './components/TextTruncator';
+export type { TextTruncatorProps } from './components/TextTruncator';
 
 // hooks
 export { default as useDebounce } from './hooks/useDebounce';
@@ -31,6 +33,7 @@ export { default as getBase64Type } from './utils/getBase64Type';
 export { default as getParms } from './utils/getParms';
 export { default as getQuery } from './utils/getQuery';
 export { default as getRandomColor } from './utils/getRandomColor';
+export type { RandomColorType } from './utils/getRandomColor';
 export { default as isArrayString } from './utils/isArrayString';
 export { default as isBase64Image } from './utils/isBase64Image';
 export { default as isObjectString } from './utils/isObjectString';

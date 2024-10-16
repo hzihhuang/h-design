@@ -1,11 +1,5 @@
-import classNames from 'classnames';
-import React, {
-  CSSProperties,
-  forwardRef,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-} from 'react';
+import classNames from 'clsx';
+import React, { CSSProperties, forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
 import useHasScroll from './hooks/useHasScroll';
 import useScrollControl from './hooks/useScrollControl';
 import './index.scss';
@@ -97,8 +91,7 @@ const ScrollContainer = forwardRef<ScrollContainerRef, Props>((props, ref) => {
   };
   /** 样式配置 */
   const styleOptions = useMemo(() => {
-    const unifiedUnit = (v?: number | string) =>
-      typeof v === 'number' ? `${v}px` : v;
+    const unifiedUnit = (v?: number | string) => (typeof v === 'number' ? `${v}px` : v);
     return {
       '--scroll-thumb-gap': unifiedUnit(curOptions.gap),
       '--scroll-thumb-size': unifiedUnit(curOptions.size),
@@ -108,9 +101,7 @@ const ScrollContainer = forwardRef<ScrollContainerRef, Props>((props, ref) => {
       '--scroll-thumb-opacity': curOptions.opacity,
       '--scroll-thumb-hover-gap': unifiedUnit(hoverThumbOptions?.gap),
       '--scroll-thumb-hover-size': unifiedUnit(hoverThumbOptions?.size),
-      '--scroll-thumb-hover-border-radius': unifiedUnit(
-        hoverThumbOptions?.radius,
-      ),
+      '--scroll-thumb-hover-border-radius': unifiedUnit(hoverThumbOptions?.radius),
       '--scroll-thumb-hover-background': hoverThumbOptions?.background,
       '--scroll-thumb-hover-border': hoverThumbOptions?.border,
       '--scroll-thumb-hover-opacity': hoverThumbOptions?.opacity,
@@ -151,11 +142,7 @@ const ScrollContainer = forwardRef<ScrollContainerRef, Props>((props, ref) => {
   );
 
   return (
-    <div
-      className={classNames('scroll-container', className)}
-      style={styleOptions}
-      ref={mainRef}
-    >
+    <div className={classNames('scroll-container', className)} style={styleOptions} ref={mainRef}>
       <div
         className={classNames('scroll-container-content', containerClassName)}
         style={containerStyle}
