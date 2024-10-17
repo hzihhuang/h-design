@@ -30,11 +30,6 @@ export { default as useThrottleState } from './hooks/useThrottleState';
 // utils
 export { default as downloadBase64Imgs } from './utils/downloadBase64Imgs';
 export { default as getBase64Type } from './utils/getBase64Type';
-export { default as getParms } from './utils/getParms';
-export { default as getQuery } from './utils/getQuery';
 export { default as getRandomColor } from './utils/getRandomColor';
 export type { RandomColorType } from './utils/getRandomColor';
-export { default as isArrayString } from './utils/isArrayString';
 export { default as isBase64Image } from './utils/isBase64Image';
-export { default as isObjectString } from './utils/isObjectString';
-export { default as isValidVariableName } from './utils/isValidVariableName';
