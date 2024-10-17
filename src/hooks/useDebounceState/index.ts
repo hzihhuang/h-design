@@ -6,18 +6,15 @@ import { Dispatch, SetStateAction, useCallback, useRef, useState } from 'react';
  * @returns [start, setDebouncedState, setStart]
  * @description 带防抖的功能 useState
  */
-function useDebounceState<T>(
-  value: T,
-  delay: number,
-): [T, Dispatch<SetStateAction<T>>, Dispatch<SetStateAction<T>>] {
+function useDebounceState<T>(value: T, delay: number): [T, Dispatch<SetStateAction<T>>, Dispatch<SetStateAction<T>>] {
   const timer = useRef<NodeJS.Timeout>();
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
   const handlerChangeState: Dispatch<SetStateAction<T>> = useCallback(
     (v) => {
       clearTimeout(timer.current);
       timer.current = setTimeout(
-        // @ts-ignore
         () =>
+          // @ts-ignore
           setDebouncedValue((v2) => (typeof v === 'function' ? v(v2) : value)),
         delay,
       );

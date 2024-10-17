@@ -6,7 +6,7 @@ function useThrottle<T>(fn: T, delay: number, deps = DEFAULT_DEPS) {
   useEffect(() => {
     current.fn = fn;
   }, [fn]);
-  const callback = useCallback<T>((...args: any) => {
+  const callback = useCallback((...args: any) => {
     if (current.timer) return;
     current.timer = setTimeout(() => {
       clearTimeout(current.timer);

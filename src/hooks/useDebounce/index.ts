@@ -6,7 +6,7 @@ function useDebounce<T>(fn: T, delay: number, deps = DEFAULT_DEPS) {
   useEffect(() => {
     current.fn = fn;
   }, [fn]);
-  const callback = useCallback<T>((...args: any) => {
+  const callback = useCallback((...args: any) => {
     clearTimeout(current.timer);
     current.timer = setTimeout(() => {
       current.fn(...args);
