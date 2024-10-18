@@ -1,6 +1,6 @@
+import { ResizeCallback, useResize } from 'HDesign';
 import classNames from 'clsx';
 import React, { ReactNode, forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import useResize, { ResizeCallback } from '../..//hooks/useResize';
 import './index.scss';
 
 export interface AutoRatioContainerRef {
