@@ -19,6 +19,8 @@ export { default as Skeleton } from './components/Skeleton';
 export type { SkeletonProps } from './components/Skeleton';
 
 // hooks
+export { default as useAttributeChange } from './hooks/useAttributeChange';
+export type { AttributeChangeCallback, AttributeObserverOptions } from './hooks/useAttributeChange';
 export { default as useDebounce } from './hooks/useDebounce';
 export { default as useDebounceState } from './hooks/useDebounceState';
 export { default as useResize } from './hooks/useResize';
