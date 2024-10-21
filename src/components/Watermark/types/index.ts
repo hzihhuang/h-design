@@ -1,99 +1,96 @@
 export interface WatermarkFont {
   /**
-   * @description 字体颜色
+   * @description 颜色
    * @property {string}
    * @default #000
    */
-  color?: string;
+  color?: string | CanvasGradient | CanvasPattern;
   /**
-   * @description 字体大小
+   * @description 大小
    * @property {number}
    * @default 16
    */
   fontSize?: number;
   /**
-   * @description 字体粗细
+   * @description 粗细
    * @property {('normal' | 'light' | 'weight' | number)}
    * @default normal
    */
   fontWeight: 'normal' | 'light' | 'weight' | number;
   /**
-   * @description 字体样式
+   * @description 字体
    * @property {string}
    * @default sans-serif
    */
   fontFamily: string;
   /**
-   * @description 字体样式
+   * @description 样式
    * @property {('none' | 'normal' | 'italic' | 'oblique')}
    * @default none
    */
   fontStyle: 'none' | 'normal' | 'italic' | 'oblique';
   /**
-   * @description 文字对齐方式
+   * @description 对齐方式
    * @property {('left' | 'right' | 'center' | 'start' | 'end')}
    * @default center
    */
-  textAlign: 'left' | 'right' | 'center' | 'start' | 'end';
+  textAlign: CanvasTextAlign;
   /**
-   * @description 文字基线
+   * @description 基线
    * @property {('top' | 'hanging' | 'middle' | 'alphabetic' | 'ideographic' | 'bottom')}
    * @default middle
    */
-  textBaseline: 'top' | 'hanging' | 'middle' | 'alphabetic' | 'ideographic' | 'bottom';
+  textBaseline: CanvasTextBaseline;
 }
 
 export interface WatermarkProps {
   /**
-   * @description 水印宽度
+   * @description 宽度
    * @property {number}
    * @default 120
    */
   width?: number;
   /**
-   * @description 水印高度
+   * @description 高度
    * @property {number}
    * @default 64
    */
   height?: number;
   /**
-   * @description 水印旋转角度
+   * @description 旋转角度
    * @property {number}
    * @default -22
    */
   rotate?: number;
   /**
-   * @description 水印图片
+   * @description 图片
    * @property {string}
-   * @default undefined
    */
   image?: string;
   /**
-   * @description 水印内容
+   * @description 内容
    * @property {string | string[]}
-   * @default undefined
    */
   content?: string | string[];
   /**
-   * @description 水印字体
+   * @description 字体
    * @property {WatermarkFont}
-   * @default undefined
    */
   font?: WatermarkFont;
   /**
-   * @description 水印间距
+   * @description 间距
    * @property {[number, number]}
    * @default [100, 100]
    */
-  gap?: [number, number];
+  gap?: number[];
   /**
-   * @description 水印偏移
+   * @description 偏移
    * @property {[number, number]}
    * @default [50, 50]
    */
-  offset?: [number, number];
+  offset?: number[];
   /**
-   * @description 水印层级
+   * @description 层级
    * @property {number}
    * @default 10
    */

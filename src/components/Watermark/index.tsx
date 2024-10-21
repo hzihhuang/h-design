@@ -1,8 +1,8 @@
 import { useMutation } from 'HDesign';
-import React, { CSSProperties, useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import './index.scss';
 import { WatermarkProps } from './types';
-import { getClips, getMarkSize, getPixelRatio, getStyleStr, reRendering } from './utils';
+import { getClips, getMarkSize, getMarkStyle, getPixelRatio, getStyleStr, reRendering } from './utils';
 
 const Watermark: React.FC<WatermarkProps> = ({
   font,
@@ -18,52 +18,18 @@ const Watermark: React.FC<WatermarkProps> = ({
 }) => {
   const fontOption = useMemo(
     () => ({
-      color: font?.color ?? 'rgba(0,0,0,.15)',
-      fontSize: font?.fontSize ?? 16,
+      color: font?.color ?? 'rgba(0,0,0,.1)',
+      fontSize: font?.fontSize ?? 18,
       fontStyle: font?.fontStyle ?? 'normal',
       fontWeight: font?.fontWeight ?? 'normal',
       fontFamily: font?.fontFamily ?? 'sans-serif',
       textAlign: font?.textAlign ?? 'center',
-      textBaseline: font?.textBaseline ?? 'middle',
+      textBaseline: font?.textBaseline ?? 'top',
     }),
     [font],
   );
-
   const gapX = useMemo(() => gap?.[0] ?? 100, [gap]);
   const gapY = useMemo(() => gap?.[1] ?? 100, [gap]);
-  const gapXCenter = useMemo(() => gapX / 2, [gapX]);
-  const gapYCenter = useMemo(() => gapY / 2, [gapY]);
-  const offsetLeft = useMemo(() => offset?.[0] ?? gapXCenter, [offset, gapXCenter]);
-  const offsetTop = useMemo(() => offset?.[1] ?? gapYCenter, [offset, gapYCenter]);
-
-  const getMarkStyle = () => {
-    const markStyle: CSSProperties = {
-      zIndex,
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      width: '100%',
-      height: '100%',
-      pointerEvents: 'none',
-      backgroundRepeat: 'repeat',
-    };
-
-    let positionLeft = offsetLeft - gapXCenter;
-    let positionTop = offsetTop - gapYCenter;
-    if (positionLeft > 0) {
-      markStyle.left = `${positionLeft}px`;
-      markStyle.width = `calc(100% - ${positionLeft}px)`;
-      positionLeft = 0;
-    }
-    if (positionTop > 0) {
-      markStyle.top = `${positionTop}px`;
-      markStyle.height = `calc(100% - ${positionTop}px)`;
-      positionTop = 0;
-    }
-    markStyle.backgroundPosition = `${positionLeft}px ${positionTop}px`;
-
-    return markStyle;
-  };
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const watermarkRef = useRef<HTMLDivElement>();
@@ -81,7 +47,12 @@ const Watermark: React.FC<WatermarkProps> = ({
       watermarkRef.current.setAttribute(
         'style',
         getStyleStr({
-          ...getMarkStyle(),
+          ...getMarkStyle({
+            zIndex,
+            gapX,
+            gapY,
+            offset,
+          }),
           backgroundImage: `url('${base64Url}')`,
           backgroundSize: `${Math.floor(markWidth)}px`,
         }),
@@ -143,8 +114,6 @@ const Watermark: React.FC<WatermarkProps> = ({
     }
   };
 
-  useEffect(() => destroyWatermark, []);
-  useEffect(renderWatermark, [font, gap, offset, zIndex, rotate, content, image, fontOption]);
   useMutation(
     (mutation) => {
       if (stopObservation.current) {
@@ -162,6 +131,9 @@ const Watermark: React.FC<WatermarkProps> = ({
       childList: true,
     },
   );
+  useEffect(() => destroyWatermark, []);
+  useEffect(renderWatermark, [font, gap, offset, zIndex, rotate, content, image, fontOption]);
+
   return (
     <div className="watermark" ref={containerRef}>
       {children}

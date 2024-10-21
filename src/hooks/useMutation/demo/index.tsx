@@ -14,8 +14,8 @@ const Index: React.FC = () => {
     },
     elementRef,
     {
-      attributes: true,
-      attributeOldValue: true,
+      attributes: true, // 监听属性变化
+      attributeOldValue: true, // 记录属性变化前的值
     },
   );
   const changeAttribute = () => {

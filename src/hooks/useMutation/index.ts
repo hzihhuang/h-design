@@ -1,8 +1,4 @@
-import { RefObject, useEffect } from 'react';
-
-const MutationObserverMap = new WeakMap();
-
-let mObserver: MutationObserver;
+import { RefObject, useEffect, useRef } from 'react';
 
 export type MutationCallback = (mutation: MutationRecord, observer: MutationObserver) => void;
 
@@ -19,7 +15,7 @@ function useMutation<T extends Element>(
   options?: MutationObserverInit,
 ) {
   let currentTarget: T;
-
+  const mObserver = useRef<MutationObserver>();
   useEffect(() => {
     // 判断 target 是否有值
     if (!!(target as RefObject<T>).current) {
@@ -29,32 +25,21 @@ function useMutation<T extends Element>(
     } else {
       return;
     }
-
-    if (!mObserver) {
-      mObserver = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          const targetCallback = MutationObserverMap.get(mutation.target);
-          if (targetCallback) {
-            targetCallback(mutation, mObserver);
-          }
-        });
+    mObserver.current = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        callback(mutation, mObserver.current as MutationObserver);
       });
-    }
-
-    MutationObserverMap.set(currentTarget, callback);
-    mObserver.observe(currentTarget, options);
-
+    });
+    mObserver.current.observe(currentTarget, options);
     return () => {
       if (!currentTarget) return;
-      MutationObserverMap.delete(currentTarget);
-      mObserver.disconnect();
+      mObserver.current?.disconnect();
     };
   }, [callback, options, target]);
 
   return () => {
-    if (!currentTarget) return;
-    MutationObserverMap.delete(currentTarget);
-    mObserver.disconnect();
+    if (!currentTarget || !mObserver) return;
+    mObserver.current?.disconnect();
   };
 }
 
