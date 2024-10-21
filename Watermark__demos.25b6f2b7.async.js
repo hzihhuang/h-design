@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkHDesign=self.webpackChunkHDesign||[]).push([[6177],{47008:function(a,t,n){n.r(t);var s=n(63412),i=n(75271),e=n(52676),u=function(){return(0,e.jsx)(s.Watermark,{content:["HzihHuang","\u6C34\u5370"],children:(0,e.jsx)("div",{style:{height:300,width:"100%"}})})};t.default=u}}]);
