@@ -2,7 +2,9 @@ import { useMutation } from 'HDesign';
 import React, { useEffect, useMemo, useRef } from 'react';
 import './index.scss';
 import { WatermarkProps } from './types';
-import { getClips, getMarkSize, getMarkStyle, getPixelRatio, getStyleStr, reRendering } from './utils';
+import { getMarkStyle, getPixelRatio, getStyleStr, reRendering } from './utils';
+import getClips from './utils/getClips';
+import getMarkSize from './utils/getMarkSize';
 
 const Watermark: React.FC<WatermarkProps> = ({
   font,
@@ -24,7 +26,7 @@ const Watermark: React.FC<WatermarkProps> = ({
       fontWeight: font?.fontWeight ?? 'normal',
       fontFamily: font?.fontFamily ?? 'sans-serif',
       textAlign: font?.textAlign ?? 'center',
-      textBaseline: font?.textBaseline ?? 'top',
+      textBaseline: font?.textBaseline ?? 'hanging',
     }),
     [font],
   );

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Index: React.FC = () => {
   return (
-    <Watermark content="你好你好你好">
+    <Watermark content={['HzihHuang', '水印']}>
       <div style={{ height: 300, width: '100%' }}></div>
     </Watermark>
   );
