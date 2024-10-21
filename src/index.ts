@@ -18,7 +18,6 @@ export { default as SimpleImg } from './components/SimpleImg';
 export { default as Skeleton } from './components/Skeleton';
 export type { SkeletonProps } from './components/Skeleton';
 export { default as Watermark } from './components/Watermark';
-export type { WatermarkFont, WatermarkProps } from './components/Watermark';
 
 // hooks
 export { default as useDebounce } from './hooks/useDebounce';

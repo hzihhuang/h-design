@@ -18,12 +18,12 @@ function useMutation<T extends Element>(
   target: T | RefObject<T | undefined>,
   options?: MutationObserverInit,
 ) {
-  let currentTarget: T | null = null;
+  let currentTarget: T;
 
   useEffect(() => {
     // 判断 target 是否有值
     if (!!(target as RefObject<T>).current) {
-      currentTarget = (target as RefObject<T>).current;
+      currentTarget = (target as RefObject<T>).current as T;
     } else if (target instanceof Element) {
       currentTarget = target as T;
     } else {
@@ -42,7 +42,6 @@ function useMutation<T extends Element>(
     }
 
     MutationObserverMap.set(currentTarget, callback);
-    console.log(mObserver);
     mObserver.observe(currentTarget, options);
 
     return () => {
