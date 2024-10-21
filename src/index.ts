@@ -17,12 +17,14 @@ export type { SidebarProps } from './components/Sidebar';
 export { default as SimpleImg } from './components/SimpleImg';
 export { default as Skeleton } from './components/Skeleton';
 export type { SkeletonProps } from './components/Skeleton';
+export { default as Watermark } from './components/Watermark';
+export type { WatermarkFont, WatermarkProps } from './components/Watermark';
 
 // hooks
-export { default as useAttributeChange } from './hooks/useAttributeChange';
-export type { AttributeChangeCallback, AttributeObserverOptions } from './hooks/useAttributeChange';
 export { default as useDebounce } from './hooks/useDebounce';
 export { default as useDebounceState } from './hooks/useDebounceState';
+export { default as useMutation } from './hooks/useMutation';
+export type { MutationCallback } from './hooks/useMutation';
 export { default as useResize } from './hooks/useResize';
 export type { ResizeCallback, ResizeObserverOptions } from './hooks/useResize';
 export { default as useSticky } from './hooks/useSticky';

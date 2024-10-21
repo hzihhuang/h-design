@@ -1,12 +1,12 @@
-import { useAttributeChange } from 'HDesign';
+import { useMutation } from 'HDesign';
 import React, { useRef, useState } from 'react';
 
 const Index: React.FC = () => {
   const elementRef = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState('');
 
-  // 使用 useAttributeChange 钩子来观察 'data-my-attribute' 属性的变化
-  useAttributeChange(
+  // 使用 useMutation 钩子来观察 'data-my-attribute' 属性的变化
+  useMutation(
     (mutationRecord) => {
       const target = mutationRecord.target as HTMLDivElement;
       setValue(target.getAttribute('data-my-attribute') || '');
@@ -14,6 +14,7 @@ const Index: React.FC = () => {
     },
     elementRef,
     {
+      attributes: true,
       attributeOldValue: true,
     },
   );
