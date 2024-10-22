@@ -1,12 +1,12 @@
 #!/bin/bash
 # 添加 Gitee 远程仓库
-if git remote | grep -q "gitee\|github"; then
+# if git remote | grep -q "gitee\|github"; then
+if git remote | grep -q "github"; then
     echo "远程仓库已存在，执行下一步..."
 else
     # git remote add gitee https://gitee.com/hzihhuang/h-design.git
     git remote add github https://github.com/hzihhuang-site/h-design.git
     echo "成功添加远程仓库..."
-    exit 1
 fi
 
 # 推送 gh-pages 分支到 gitee 的 master 分支
