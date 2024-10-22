@@ -5,3 +5,10 @@ node_modules
 .dumi/tmp-test
 .dumi/tmp-production
 .DS_Store
+
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+.pnpm-debug.log*
+npm-debug.log*
+yarn-error.log*
