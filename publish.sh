@@ -5,7 +5,7 @@ if git remote | grep -q "gitee\|github"; then
 else
     # git remote add gitee https://gitee.com/hzihhuang/h-design.git
     git remote add github https://github.com/hzihhuang-site/h-design.git
-    echo "成功添加 Gitee 远程仓库..."
+    echo "成功添加远程仓库..."
     exit 1
 fi
 
