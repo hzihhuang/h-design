@@ -1,33 +1,33 @@
 #!/bin/bash
-# 添加 Gitee 远程仓库
-# if git remote | grep -q "gitee\|github"; then
-if git remote | grep -q "github"; then
+# 当前仓库分支名称
+REMOTE_BRANCH_NAME="origin/gh-pages"
+
+# 远程仓库分支名称
+LOCAL_BRANCH_NAME="gh-pages"
+
+# 远程仓库别名
+REMOTE_ALIAS="site"
+
+# 设置远程仓库地址
+REMOTE_REPO_URL="https://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@github.com/hzihhuang-site/h-design.git"
+
+# 添加远程仓库
+if git remote | grep -q $REMOTE_ALIAS; then
     echo "远程仓库已存在，执行下一步..."
 else
-    # git remote add gitee https://gitee.com/hzihhuang/h-design.git
-    git remote add github https://github.com/hzihhuang-site/h-design.git
+    git remote add $REMOTE_ALIAS $REMOTE_REPO_URL
     echo "成功添加远程仓库..."
 fi
 
-# 推送 gh-pages 分支到 gitee 的 master 分支
+# 获取最新代码
 git pull
-if [ $? -eq 0 ]; then
-    echo "获取最新代码成功，执行下一步..."
-    # git push gitee origin/gh-pages:master -f
-    git push github origin/gh-pages:master -f
-else
-    echo "获取代码失败，本地代码开始进行提交..."
-    git add -A
-    git commit -m "docs: 发布-同步本地"
-    git pull
-    # git push gitee origin/gh-pages:master -f
-    git push github origin/gh-pages:master -f
-fi
+# 推送制定发展到远程仓库分支
+git push $REMOTE_ALIAS $REMOTE_BRANCH_NAME:$LOCAL_BRANCH_NAME
 
 # 检查推送是否成功
 if [ $? -eq 0 ]; then
-    echo "推送成功"
+  echo "推送成功！"
 else
-    echo "出现错误，请检查..."
-    exit 1
+  echo "推送失败，请检查是否有权限或远程仓库地址是否正确。"
+  exit 1
 fi
