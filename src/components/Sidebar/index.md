@@ -2,7 +2,7 @@
 title: Sidebar
 group:
   title: 功能性
-  order: 1
+  order: 4
 ---
 
 # Sidebar

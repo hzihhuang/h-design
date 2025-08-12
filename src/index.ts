@@ -17,6 +17,7 @@ export type { SidebarProps } from './components/Sidebar';
 export { default as SimpleImg } from './components/SimpleImg';
 export { default as Skeleton } from './components/Skeleton';
 export type { SkeletonProps } from './components/Skeleton';
+export { default as VideoFrameViewer } from './components/VideoFrameViewer';
 
 // hooks
 export { default as useDebounce } from './hooks/useDebounce';
@@ -28,6 +29,8 @@ export type { ResizeCallback, ResizeObserverOptions } from './hooks/useResize';
 export { default as useSticky } from './hooks/useSticky';
 export { default as useThrottle } from './hooks/useThrottle';
 export { default as useThrottleState } from './hooks/useThrottleState';
+export { default as useVideoFrames } from './hooks/useVideoFrames';
+export type { useVideoFramesProps } from './hooks/useVideoFrames';
 
 // utils
 export { default as downloadBase64Imgs } from './utils/downloadBase64Imgs';
