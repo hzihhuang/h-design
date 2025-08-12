@@ -1,6 +1,5 @@
 import { VideoFrameViewer } from 'HDesign';
 import React, { useEffect, useState } from 'react';
-import url from '../../../assets/test.mp4';
 
 const Index: React.FC = () => {
   const [frames, setFrames] = useState<VideoFrame[]>([]);
@@ -16,7 +15,7 @@ const Index: React.FC = () => {
     <div>
       <VideoFrameViewer
         className="w-full aspect-video bg-blue-200"
-        url={url}
+        url="https://i.imgur.com/7GoEW65.mp4"
         currentFrame={currentFrame}
         onTotalFrames={setFrames}
       />

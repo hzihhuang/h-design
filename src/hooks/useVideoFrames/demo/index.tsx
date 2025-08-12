@@ -1,6 +1,5 @@
 import { useVideoFrames } from 'HDesign';
 import React, { useEffect, useRef } from 'react';
-import url from '../../../assets/test.mp4';
 
 const FrameCanvas = ({ frame, scale = 0.25 }: { frame: VideoFrame; scale?: number }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -26,7 +25,7 @@ const FrameCanvas = ({ frame, scale = 0.25 }: { frame: VideoFrame; scale?: numbe
 
 const Index = () => {
   const { frames } = useVideoFrames({
-    url,
+    url: 'https://i.imgur.com/7GoEW65.mp4',
   });
 
   return (
