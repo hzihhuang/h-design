@@ -2,7 +2,7 @@
 title: useSticky
 group:
   title: element
-  order: 4
+  order: 3
 order: 2
 ---
 

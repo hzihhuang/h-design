@@ -22,6 +22,7 @@ export { default as VideoFrameViewer } from './components/VideoFrameViewer';
 // hooks
 export { default as useDebounce } from './hooks/useDebounce';
 export { default as useDebounceState } from './hooks/useDebounceState';
+export { default as useLocalStorageState } from './hooks/useLocalStorageState';
 export { default as useMutation } from './hooks/useMutation';
 export type { MutationCallback } from './hooks/useMutation';
 export { default as useResize } from './hooks/useResize';
@@ -31,6 +32,8 @@ export { default as useThrottle } from './hooks/useThrottle';
 export { default as useThrottleState } from './hooks/useThrottleState';
 export { default as useVideoFrames } from './hooks/useVideoFrames';
 export type { useVideoFramesProps } from './hooks/useVideoFrames';
+export { default as useVideoHotkeys } from './hooks/useVideoHotkeys';
+export type { UseVideoHotkeysOptions } from './hooks/useVideoHotkeys';
 
 // utils
 export { default as downloadBase64Imgs } from './utils/downloadBase64Imgs';
